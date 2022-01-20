@@ -10,11 +10,15 @@ body{
 }
 
 .col-md-7{
-    margin-top: 10vh;
+    margin: 10vh 0 10vh 0;
 }
 
 h3{
     margin-left: 5vw;
     color: #444444;
     font-weight: bolder;
+}
+
+.row{
+    background-color: rgba(137, 137, 124, 0.45);
 }
