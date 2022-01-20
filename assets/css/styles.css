@@ -1,0 +1,20 @@
+body{
+    background-image: url("../img/food1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.col-md-5{
+    margin-top: 15vh;
+}
+
+.col-md-7{
+    margin-top: 10vh;
+}
+
+h3{
+    margin-left: 5vw;
+    color: #444444;
+    font-weight: bolder;
+}
