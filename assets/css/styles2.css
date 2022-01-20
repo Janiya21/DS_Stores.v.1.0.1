@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/food1.jpg");
+    background-image: url("../img/food2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
@@ -20,5 +20,5 @@ h3{
 }
 
 .row{
-    background-color: rgba(83, 65, 36, 0.36);
+    background-color: rgba(104, 90, 70, 0.37);
 }
