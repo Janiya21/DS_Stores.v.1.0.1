@@ -29,3 +29,8 @@ h3{
 
 }
 
+.form-control{
+    background-color: rgba(167, 166, 166, 0.4) !important;
+    border:2px solid #b3b3b3 !important;
+    color: white !important;
+}
