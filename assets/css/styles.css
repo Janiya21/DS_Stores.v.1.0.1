@@ -5,20 +5,27 @@ body{
     color: white;
 }
 
-.col-md-5{
-    margin-top: 15vh;
+@media (min-width: 992px){
+    .mt-lg-5 {
+        margin-top: 1rem!important;
+    }
 }
 
-.col-md-7{
-    margin: 10vh 0 10vh 0;
+@media (min-width: 768px){
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 90%;
+    }
 }
 
 h3{
-    margin-left: 5vw;
+    margin-left: 10vw;!important;
     color: #444444;
     font-weight: bolder;
 }
 
 .row{
     background-color: rgba(83, 65, 36, 0.36);
+
 }
+
