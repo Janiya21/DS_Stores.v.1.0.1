@@ -1,0 +1,38 @@
+body{
+    background-image: url("../img/food1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+@media (min-width: 992px){
+    .mt-lg-5 {
+        margin-top: 1rem!important;
+    }
+}
+
+@media (min-width: 768px){
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 90%;
+    }
+}
+
+h3{
+    margin-left: 10vw;!important;
+    color: #444444;
+    font-weight: bolder;
+}
+
+.row{
+    background-color: rgba(83, 65, 36, 0.36);
+}
+
+.form-control{
+    background-color: rgba(61, 61, 61, 0.4) !important;
+    border:2px solid #b3b3b3 !important;
+}
+
+.form-control::placeholder {
+    color: #a17e7e;
+}
