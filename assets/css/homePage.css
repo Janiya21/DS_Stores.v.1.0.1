@@ -1,0 +1,24 @@
+body{
+    background-image: url("../img/st1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.carousel-caption{
+    bottom: unset !important;
+    top: 2rem !important;
+}
+
+.card-body{
+    background-color: rgba(104, 102, 102, 0.17);
+}
+
+.card{
+    background-color: rgba(104, 102, 102, 0.17);
+    margin-left: 3vw;
+}
+
+.card-col{
+    display: flex;
+}
