@@ -1,24 +1,141 @@
 body{
-    background-image: url("../img/st1.jpg");
+    background-image: url("../img/food1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
 }
 
-.carousel-caption{
+/* ---------------------------- homePage.html --------------------------------------- */
+
+#cont-01 .carousel-caption{
     bottom: unset !important;
     top: 2rem !important;
 }
 
-.card-body{
+#cont-01 .card-body{
     background-color: rgba(104, 102, 102, 0.17);
 }
 
-.card{
+#cont-01 .card{
     background-color: rgba(104, 102, 102, 0.17);
     margin-left: 3vw;
 }
 
-.card-col{
+#cont-01 .card-col{
     display: flex;
+}
+
+/* ---------------------------- Index.html --------------------------------------- */
+
+@media (min-width: 992px){
+    #cont-02 .mt-lg-5 {
+        margin-top: 1rem!important;
+    }
+}
+
+@media (min-width: 768px){
+    #cont-02 .col-md-6 {
+        flex: 0 0 auto;
+        width: 90%;
+    }
+}
+
+#cont-02 h3{
+    margin-left: 10vw;!important;
+    color: #444444;
+    font-weight: bolder;
+}
+
+#cont-02 .row{
+    background-color: rgba(52, 44, 38, 0.49) !important;
+
+}
+
+#cont-02 .form-control{
+    background-color: rgba(167, 166, 166, 0.4) !important;
+    border:2px solid #b3b3b3 !important;
+    color: white !important;
+}
+
+
+/* ---------------------------- Index2.html --------------------------------------- */
+
+#cont-03 .col-md-5{
+    margin-top: 15vh;
+}
+
+#cont-03 .col-md-7{
+    margin: 10vh 0 10vh 0;
+}
+
+#cont-03 h3{
+    margin-left: 5vw;
+    color: #444444;
+    font-weight: bolder;
+}
+
+#cont-03{
+    background-color: rgba(52, 44, 38, 0.49) !important;
+}
+
+@media (min-width: 768px){
+    #cont-03 .col-md-6 {
+        flex: 0 0 auto;
+        width: 80%;
+    }
+}
+
+#cont-03 .custom-select{
+    width: 100%;
+    height: 40px;
+}
+
+#cont-03 .form-control{
+    background-color: rgba(61, 61, 61, 0.4) !important;
+    border:2px solid #b3b3b3 !important;
+}
+
+#cont-03 .three {
+    width: 17vw;
+    height: auto;
+    float: right;
+    position: relative;
+}
+
+#cont-03 .form-control::placeholder {
+    color: #a17e7e;
+}
+
+/* ---------------------------- Index3.html --------------------------------------- */
+
+@media (min-width: 992px){
+    #cont-04 .mt-lg-5 {
+        margin-top: 1rem!important;
+    }
+}
+
+@media (min-width: 768px){
+    #cont-04 .col-md-6 {
+        flex: 0 0 auto;
+        width: 90%;
+    }
+}
+
+#cont-04 h3{
+    margin-left: 10vw;!important;
+    color: #444444;
+    font-weight: bolder;
+}
+
+#cont-04 .row{
+    background-color: rgba(52, 44, 38, 0.49) !important;
+}
+
+#cont-04 .form-control{
+    background-color: rgba(61, 61, 61, 0.4) !important;
+    border:2px solid #b3b3b3 !important;
+}
+
+#cont-04 .form-control::placeholder {
+    color: #a17e7e;
 }

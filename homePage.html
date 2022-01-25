@@ -13,26 +13,27 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="homePage.html">DS Stores</a>
         <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-                class="navbar-toggler"
+                class="navbar-toggler" id="homePage"
                 data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a aria-current="page" class="nav-link active" href="index.html">Register</a>
+                    <a aria-current="page" id="register" class="nav-link active" >Register</a>
                 </li>
                 <li class="nav-item">
-                    <a aria-current="page" class="nav-link active" href="index2.html">Place Order</a>
+                    <a aria-current="page" id="placeOrder" class="nav-link active">Place Order</a>
                 </li>
                 <li class="nav-item">
-                    <a aria-current="page" class="nav-link active" href="index3.html">Order History</a>
+                    <a aria-current="page" id="orderHistory" class="nav-link active">Order History</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
+<div id="cont-01" class="container" >
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -131,9 +132,413 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+</div>
+<div id="cont-02" class="container" style="display: none">
+    <div class="row mt-lg-5">
+
+        <div class="col">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #c2b09d">Register a Item</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <form action="">
+                    <div class="mb-3">
+                        <label for="itemCode" class="form-label">Item Code</label>
+                        <input type="text" class="form-control" id="itemCode1" aria-describedby="nameHelp" placeholder="Item Code">
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="itemName1" aria-describedby="nameHelp" placeholder="Item Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitPrice" class="form-label">Unit Price</label>
+                        <input type="text" class="form-control" id="unitPrice" aria-describedby="nameHelp" placeholder="Unit Price">
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="text" class="form-control" id="quantity" aria-describedby="nameHelp" placeholder="Qty">
+                    </div>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Delete Item </button>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Update Item </button>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Add Item </button>
+                </form>
+
+                <section class="shadow-lg">
+                    <table class="table table-bordered table-hover mt-2" style="height: 200px">
+                        <thead class="bg-dark text-white">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>C001</td>
+                            <td>Dasun</td>
+                            <td>Galle</td>
+                        </tr>
+                        <tr>
+                            <td>C002</td>
+                            <td>Kamal</td>
+                            <td>Panadura</td>
+                        </tr>
+                        <tr>
+                            <td>C002</td>
+                            <td>Kamal</td>
+                            <td>Panadura</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #c2b09d">Register a Customer</h3>
+                </div>
+            </div>
+
+            <div class="row two">
+                <form action="index2.html">
+                    <div class="mb-3">
+                        <label for="customerId" class="form-label">Customer Id</label>
+                        <input type="text" class="form-control" id="customerId1" aria-describedby="telHelp" placeholder="Customer Id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="customerName" aria-describedby="nameHelp" placeholder="Customer Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email Address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputTelNo" class="form-label">Tel No</label>
+                        <input type="text" class="form-control" id="exampleInputTelNo" aria-describedby="telHelp" placeholder="Telephone">
+                    </div>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Delete Customer</button>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Update Customer </button>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Add Customer </button>
+                </form>
+
+
+                <section class="shadow-lg">
+                    <table class="table table-bordered table-hover mt-2" style="height: 200px">
+                        <thead class="bg-dark text-white">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>C001</td>
+                            <td>Dasun</td>
+                            <td>Galle</td>
+                        </tr>
+                        <tr>
+                            <td>C002</td>
+                            <td>Kamal</td>
+                            <td>Panadura</td>
+                        </tr>
+                        <tr>
+                            <td>C002</td>
+                            <td>Kamal</td>
+                            <td>Panadura</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="cont-03" class="container" style="display: none">
+
+    <div class="row mt-lg-5">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #c2b09d">Add To Cart</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <form>
+                    <div class="form-group mt-4">
+                        <select class="custom-select" required>
+                            <option value="">Select Customer Id</option>
+                            <option value="1">C-001</option>
+                            <option value="2">C-002</option>
+                            <option value="3">C-003</option>
+                        </select>
+                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <input type="text" class="form-control" id="customId" aria-describedby="telHelp" placeholder="Customer Name">
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group mt-4">
+                        <select class="custom-select" required>
+                            <option value="">Select Item Id</option>
+                            <option value="1">I-001</option>
+                            <option value="2">I-002</option>
+                            <option value="3">I-003</option>
+                        </select>
+                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <input type="text" class="form-control" id="itemId" aria-describedby="telHelp" placeholder="Item Name">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <input type="text" class="form-control" id="unitPrice2" aria-describedby="telHelp" placeholder="Unit Price">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <input type="text" class="form-control" id="itemQty" aria-describedby="telHelp" placeholder="Available qty">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <input type="text" class="form-control" id="orderQty" aria-describedby="telHelp" placeholder="Order Qty">
+                    </div>
+
+                    <button type="submit" class="btn btn-dark float-end mb-3"> Add To Cart </button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #c2b09d">Cart Items</h3>
+                </div>
+            </div>
+
+            <div class="row two">
+                <section class="shadow-lg">
+                    <table class="table table-bordered table-hover mt-3 text-white" style="height: 200px">
+                        <thead class="bg-dark">
+                        <tr>
+                            <th>Item Id</th>
+                            <th>Name</th>
+                            <th>Units</th>
+                            <th>Unit Price</th>
+                            <th class="w-25">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>I-001</td>
+                            <td>Samba Rice</td>
+                            <td>2</td>
+                            <td>130.00</td>
+                            <td>260.00</td>
+                        </tr>
+                        <tr>
+                            <td>I-001</td>
+                            <td>Samba Rice</td>
+                            <td>2</td>
+                            <td>130.00</td>
+                            <td>260.00</td>
+                        </tr>
+                        <tr>
+                            <td>I-001</td>
+                            <td>Samba Rice</td>
+                            <td>2</td>
+                            <td>130.00</td>
+                            <td>260.00</td>
+                        </tr>
+                        <tr>
+                            <td>I-001</td>
+                            <td>Samba Rice</td>
+                            <td>2</td>
+                            <td>130.00</td>
+                            <td>260.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+            <div class="row three">
+                <form action="">
+                    <div class="mb-3">
+                        <input type="text" class="form-control text-white" id="itemCode" aria-describedby="nameHelp" placeholder="Total">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="itemName" aria-describedby="nameHelp" placeholder="Discount">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="totBil" aria-describedby="nameHelp" placeholder="Total Bill">
+                    </div>
+                    <button type="submit" class="btn btn-dark float-end mb-3"> Add Item </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="cont-04" class="container" style="display: none">
+    <div class="row mt-lg-5">
+
+        <div class="col">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #c2b09d">Order History</h3>
+                </div>
+            </div>
+
+            <div class="row two">
+                <form action="index2.html">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="customerId" aria-describedby="telHelp" placeholder="Search Id">
+                    </div>
+                </form>
+
+
+                <section class="shadow-lg">
+                    <table class="table table-bordered table-hover mt-3 text-white" style="height: 200px">
+                        <thead class="bg-dark text-white">
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Customer Id</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Total Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>O-001</td>
+                            <td>C-002</td>
+                            <td>2021-10-09</td>
+                            <td>17.32</td>
+                            <td>1800.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById("register").addEventListener("click", function (){
+
+        document.getElementById("cont-02").style.display = 'inherit';
+        document.getElementById("cont-01").style.display = 'none';
+        document.getElementById("cont-03").style.display = 'none';
+        document.getElementById("cont-04").style.display = 'none';
+
+    });
+    document.getElementById("placeOrder").addEventListener("click", function (){
+
+        document.getElementById("cont-03").style.display = 'inherit';
+        document.getElementById("cont-01").style.display = 'none';
+        document.getElementById("cont-02").style.display = 'none';
+        document.getElementById("cont-04").style.display = 'none';
+
+    });
+    document.getElementById("orderHistory").addEventListener("click", function (){
+
+        document.getElementById("cont-04").style.display = 'inherit';
+        document.getElementById("cont-01").style.display = 'none';
+        document.getElementById("cont-03").style.display = 'none';
+        document.getElementById("cont-02").style.display = 'none';
+
+    });
+    document.getElementById("homePage").addEventListener("click", function (){
+
+        document.getElementById("cont-01").style.display = 'inherit';
+        document.getElementById("cont-02").style.display = 'none';
+        document.getElementById("cont-03").style.display = 'none';
+        document.getElementById("cont-04").style.display = 'none';
+
+    });
+</script>
 
 </body>
 </html>
