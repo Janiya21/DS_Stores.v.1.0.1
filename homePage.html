@@ -12,7 +12,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="homePage.html">DS Stores</a>
-        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        <button aria-controls="navbarSupportedContent" onclick="isDisplay('homePage') " aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler" id="homePage"
                 data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
@@ -20,13 +20,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a aria-current="page" id="register" class="nav-link active" >Register</a>
+                    <a aria-current="page" id="register" class="nav-link active btn"  onclick="isDisplay('register')" >Register</a>
                 </li>
                 <li class="nav-item">
-                    <a aria-current="page" id="placeOrder" class="nav-link active">Place Order</a>
+                    <a aria-current="page" id="placeOrder" class="nav-link active btn" onclick="isDisplay('placeOrder')">Place Order</a>
                 </li>
                 <li class="nav-item">
-                    <a aria-current="page" id="orderHistory" class="nav-link active">Order History</a>
+                    <a aria-current="page" id="orderHistory" class="nav-link active btn" onclick="isDisplay('orderHistory')">Order History</a>
                 </li>
             </ul>
         </div>
@@ -41,13 +41,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="assets/img/pg2.jpg" style="height: 92.2vh" class="d-block w-100" alt="...">
+                <img src="assets/img/ProduceX.jpg" style="height: 92.2vh" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block mb-5">
-                    <h5>WELCOME TO THE STORE</h5>
+                    <h5 class="fw-bold">WELCOME TO THE D.S STORE (pvt ltd)</h5>
 
                     <div class="card-col">
                         <div class="card mt-3 mb-3 me-4" style="width: 18rem;">
-                            <img src="assets/img/dil2.jpg" style="height: 200px" class="card-img-top" alt="...">
+                            <img src="assets/img/rb.jpg" style="height: 200px" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title text-light">Delivery</h5>
                                 <p class="card-text">We Deliver the goods at your door step with given minimum time</p>
@@ -63,7 +63,7 @@
 
                         </div>
                         <div class="card mt-3 mb-3 me-4" style="width: 18rem;">
-                            <img src="assets/img/Food-Safety.png" style="height: 200px" class="card-img-top" alt="...">
+                            <img src="assets/img/safe1.jpg" style="height: 200px" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title text-light">Safety</h5>
                                 <p class="card-text">We are highly considering the safety guidelines for the customer 100%</p>
@@ -86,28 +86,28 @@
                 <div class="carousel-caption d-none d-md-block mb-5">
                     <h5>WELCOME TO THE STORE</h5>
 
-                    <div class="card-col">
-                        <div class="card mt-3 mb-3 me-4" style="width: 18rem;">
-                            <img src="assets/img/dil2.jpg" style="height: 200px" class="card-img-top" alt="...">
+                    <div class="card-col mt-4">
+                        <div class="card mt-3 mb-3 me-4" style="width: 22rem;">
+                            <img src="assets/img/4600.jpg" style="height: 170px" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title text-light">Delivery</h5>
-                                <p class="card-text">We Deliver the goods at your door step with given minimum time</p>
+                                <h5 class="card-title text-light">Items</h5>
+                                <p class="card-text">4600+ Daily-need Items For You with amazing discounts!!</p>
                             </div>
 
                         </div>
-                        <div class="card mt-3 mb-3 me-4" style="width: 18rem;">
-                            <img src="assets/img/dis2.jpg" style="height: 200px" class="card-img-top" alt="...">
+                        <div class="card mt-3 mb-3 me-4" style="width: 22rem;">
+                            <img src="assets/img/20000.jpg" style="height: 170px" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title text-light">Discounts</h5>
-                                <p class="card-text">Upto 30% Discounts, when you are paying with BOC, Sampath Debit Cards</p>
+                                <h5 class="card-title text-light">Orders</h5>
+                                <p class="card-text">20K+ Orders had done from ore store upto now !!</p>
                             </div>
 
                         </div>
-                        <div class="card mt-3 mb-3 me-4" style="width: 18rem;">
-                            <img src="assets/img/Food-Safety.png" style="height: 200px" class="card-img-top" alt="...">
+                        <div class="card mt-3 mb-3 me-4" style="width: 22rem;">
+                            <img src="assets/img/6500.jpg" style="height: 170px" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title text-light">Safety</h5>
-                                <p class="card-text">We are highly considering the safety guidelines for the customer 100%</p>
+                                <h5 class="card-title text-light">Customers</h5>
+                                <p class="card-text">6.5K Valuable Customers has taken membership of our store </p>
                             </div>
 
                         </div>
@@ -161,13 +161,13 @@
                         <label for="quantity" class="form-label">Quantity</label>
                         <input type="text" class="form-control" id="quantity" aria-describedby="nameHelp" placeholder="Qty">
                     </div>
-                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Delete Item </button>
-                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Update Item </button>
+                    <button type="submit" class="btn btn-danger float-end mb-3 me-2"> Delete Item </button>
+                    <button type="submit" class="btn btn-success float-end mb-3 me-2"> Update Item </button>
                     <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Add Item </button>
                 </form>
 
-                <section class="shadow-lg">
-                    <table class="table table-bordered table-hover mt-2" style="height: 200px">
+                <section class="shadow-lg table-responsive">
+                    <table class="table table-bordered table-hover mt-2 text-light" style="height: 200px">
                         <thead class="bg-dark text-white">
                         <tr>
                             <th>ID</th>
@@ -223,14 +223,14 @@
                         <label for="exampleInputTelNo" class="form-label">Tel No</label>
                         <input type="text" class="form-control" id="exampleInputTelNo" aria-describedby="telHelp" placeholder="Telephone">
                     </div>
-                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Delete Customer</button>
-                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Update Customer </button>
+                    <button type="submit" class="btn btn-danger float-end mb-3 me-2"> Delete Customer</button>
+                    <button type="submit" class="btn btn-success float-end mb-3 me-2"> Update Customer </button>
                     <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Add Customer </button>
                 </form>
 
 
                 <section class="shadow-lg">
-                    <table class="table table-bordered table-hover mt-2" style="height: 200px">
+                    <table class="table table-bordered table-hover mt-2 text-light" style="height: 200px">
                         <thead class="bg-dark text-white">
                         <tr>
                             <th>ID</th>
@@ -312,7 +312,7 @@
                         <input type="text" class="form-control" id="orderQty" aria-describedby="telHelp" placeholder="Order Qty">
                     </div>
 
-                    <button type="submit" class="btn btn-dark float-end mb-3"> Add To Cart </button>
+                    <button type="submit" class="btn btn-success float-end mb-3"> Add To Cart </button>
                 </form>
 
             </div>
@@ -382,7 +382,7 @@
                     <div class="mb-3">
                         <input type="text" class="form-control" id="totBil" aria-describedby="nameHelp" placeholder="Total Bill">
                     </div>
-                    <button type="submit" class="btn btn-dark float-end mb-3"> Add Item </button>
+                    <button type="submit" class="btn btn-dark float-end mt-4"> Create Bill </button>
                 </form>
             </div>
         </div>
@@ -503,10 +503,13 @@
     </div>
 </div>
 
+<!--<div class="table-responsive">
+    <table class="table table-striped table-sm">-->
 
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
-    document.getElementById("register").addEventListener("click", function (){
+
+    /*document.getElementById("register").addEventListener("click", function (){
 
         document.getElementById("cont-02").style.display = 'inherit';
         document.getElementById("cont-01").style.display = 'none';
@@ -537,7 +540,32 @@
         document.getElementById("cont-03").style.display = 'none';
         document.getElementById("cont-04").style.display = 'none';
 
-    });
+    });*/
+
+    function isDisplay(d){
+        if(d==="register"){
+            document.getElementById("cont-02").style.display = 'inherit';
+            document.getElementById("cont-01").style.display = 'none';
+            document.getElementById("cont-03").style.display = 'none';
+            document.getElementById("cont-04").style.display = 'none';
+        }if(d==="placeOrder"){
+            document.getElementById("cont-03").style.display = 'inherit';
+            document.getElementById("cont-01").style.display = 'none';
+            document.getElementById("cont-02").style.display = 'none';
+            document.getElementById("cont-04").style.display = 'none';
+        }if(d==="orderHistory"){
+            document.getElementById("cont-04").style.display = 'inherit';
+            document.getElementById("cont-01").style.display = 'none';
+            document.getElementById("cont-03").style.display = 'none';
+            document.getElementById("cont-02").style.display = 'none';
+        }if(d==="homePage"){
+            document.getElementById("cont-01").style.display = 'inherit';
+            document.getElementById("cont-02").style.display = 'none';
+            document.getElementById("cont-03").style.display = 'none';
+            document.getElementById("cont-04").style.display = 'none';
+        }
+    }
+
 </script>
 
 </body>
