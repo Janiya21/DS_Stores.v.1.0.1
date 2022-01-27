@@ -128,6 +128,7 @@ body{
 
 #cont-04 .row{
     background-color: rgba(52, 44, 38, 0.49) !important;
+    /*height: 90vh;*/
 }
 
 #cont-04 .form-control{
