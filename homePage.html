@@ -11,22 +11,19 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="homePage.html">DS Stores</a>
-        <button aria-controls="navbarSupportedContent" onclick="isDisplay('homePage') " aria-expanded="false" aria-label="Toggle navigation"
-                class="navbar-toggler" id="homePage"
-                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a aria-current="page" id="register" class="nav-link active btn"  onclick="isDisplay('register')" >Register</a>
+                    <a aria-current="page" id="homePage" class="nav-link active btn" ><b>DS Stores</b></a>
                 </li>
                 <li class="nav-item">
-                    <a aria-current="page" id="placeOrder" class="nav-link active btn" onclick="isDisplay('placeOrder')">Place Order</a>
+                    <a aria-current="page" id="register" class="nav-link active btn" >Register</a>
                 </li>
                 <li class="nav-item">
-                    <a aria-current="page" id="orderHistory" class="nav-link active btn" onclick="isDisplay('orderHistory')">Order History</a>
+                    <a aria-current="page" id="placeOrder" class="nav-link active btn" >Place Order</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" id="orderHistory" class="nav-link active btn" >Order History</a>
                 </li>
             </ul>
         </div>
@@ -144,29 +141,29 @@
             </div>
 
             <div class="row">
-                <form action="">
+                <form>
                     <div class="mb-3">
-                        <label for="itemCode" class="form-label">Item Code</label>
-                        <input type="text" class="form-control" id="itemCode1" aria-describedby="nameHelp" placeholder="Item Code">
+                        <label for="txtItemCode" class="form-label">Item Code</label>
+                        <input type="text" class="form-control" id="txtItemCode" aria-describedby="nameHelp" placeholder="Item Code">
                     </div>
                     <div class="mb-3">
-                        <label for="itemName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="itemName1" aria-describedby="nameHelp" placeholder="Item Name">
+                        <label for="txtItemName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="txtItemName" aria-describedby="nameHelp" placeholder="Item Name">
                     </div>
                     <div class="mb-3">
-                        <label for="unitPrice" class="form-label">Unit Price</label>
-                        <input type="text" class="form-control" id="unitPrice" aria-describedby="nameHelp" placeholder="Unit Price">
+                        <label for="txtUnitPrice" class="form-label">Unit Price</label>
+                        <input type="text" class="form-control" id="txtUnitPrice" aria-describedby="nameHelp" placeholder="Unit Price">
                     </div>
                     <div class="mb-3">
-                        <label for="quantity" class="form-label">Quantity</label>
-                        <input type="text" class="form-control" id="quantity" aria-describedby="nameHelp" placeholder="Qty">
+                        <label for="txtQty" class="form-label">Quantity</label>
+                        <input type="text" class="form-control" id="txtQty" aria-describedby="nameHelp" placeholder="Qty">
                     </div>
-                    <button type="submit" class="btn btn-danger float-end mb-2 me-2"> Delete Item </button>
-                    <button type="submit" class="btn btn-success float-end mb-2 me-2"> Update Item </button>
-                    <button type="submit" class="btn btn-dark float-end mb-2 me-2"> Add Item </button>
+                    <button class="btn btn-danger float-end mb-2 me-2"> Delete Item </button>
+                    <button class="btn btn-success float-end mb-2 me-2"> Update Item </button>
+                    <button id="addNewItem" class="btn btn-dark float-end mb-2 me-2"> Add Item </button>
                 </form>
 
-                <section class="shadow-lg table-responsive">
+                <section class="shadow-lg table-responsive table-wrap3">
                     <table class="table table-bordered table-hover mt-2 text-light" style="height: 200px">
                         <thead class="bg-dark text-white">
                         <tr>
@@ -206,7 +203,7 @@
             </div>
 
             <div class="row two">
-                <form action="index2.html">
+                <form>
                     <div class="mb-3">
                         <label for="customerId" class="form-label">Customer Id</label>
                         <input type="text" class="form-control" id="customerId1" aria-describedby="telHelp" placeholder="Customer Id">
@@ -228,8 +225,7 @@
                     <button type="submit" class="btn btn-dark float-end mb-2 me-2"> Add Customer </button>
                 </form>
 
-
-                <section class="shadow-lg">
+                <section class="shadow-lg table-responsive table-wrap3">
                     <table class="table table-bordered table-hover mt-2 text-light" style="height: 200px">
                         <thead class="bg-dark text-white">
                         <tr>
@@ -325,8 +321,8 @@
                 </div>
             </div>
 
-            <div class="row two">
-                <section class="shadow-lg">
+            <div class="row two mb-3">
+                <section class="shadow-lg table-wrap2">
                     <table class="table table-bordered table-hover mt-3 text-white" style="height: 200px">
                         <thead class="bg-dark">
                         <tr>
@@ -406,8 +402,8 @@
                 </form>
 
 
-                <section class="shadow-lg">
-                    <table class="table table-bordered table-hover mt-3 text-white" style="height: 200px">
+                <section class="shadow-lg table-wrap">
+                    <table class="table table-bordered table-hover mt-3 text-white"  style="height: 70vh">
                         <thead class="bg-dark text-white">
                         <tr>
                             <th>Order Id</th>
@@ -418,70 +414,69 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>O-001</td>
-                            <td>C-002</td>
-                            <td>2021-10-09</td>
-                            <td>17.32</td>
-                            <td>1800.00</td>
-                        </tr>
-                        <tr>
-                            <td>O-001</td>
-                            <td>C-002</td>
-                            <td>2021-10-09</td>
-                            <td>17.32</td>
-                            <td>1800.00</td>
-                        </tr>
-                        <tr>
-                            <td>O-001</td>
-                            <td>C-002</td>
-                            <td>2021-10-09</td>
-                            <td>17.32</td>
-                            <td>1800.00</td>
-                        </tr>
-                        <tr>
-                            <td>O-001</td>
-                            <td>C-002</td>
-                            <td>2021-10-09</td>
-                            <td>17.32</td>
-                            <td>1800.00</td>
-                        </tr>
-                        <tr>
-                            <td>O-001</td>
-                            <td>C-002</td>
-                            <td>2021-10-09</td>
-                            <td>17.32</td>
-                            <td>1800.00</td>
-                        </tr>
-                        <tr>
-                            <td>O-001</td>
-                            <td>C-002</td>
-                            <td>2021-10-09</td>
-                            <td>17.32</td>
-                            <td>1800.00</td>
-                        </tr>
-                        <tr>
-                            <td>O-001</td>
-                            <td>C-002</td>
-                            <td>2021-10-09</td>
-                            <td>17.32</td>
-                            <td>1800.00</td>
-                        </tr>
-                        <tr>
-                            <td>O-001</td>
-                            <td>C-002</td>
-                            <td>2021-10-09</td>
-                            <td>17.32</td>
-                            <td>1800.00</td>
-                        </tr>
-                        <tr>
-                            <td>O-001</td>
-                            <td>C-002</td>
-                            <td>2021-10-09</td>
-                            <td>17.32</td>
-                            <td>1800.00</td>
-                        </tr>
-
+                            <tr>
+                                <td>O-001</td>
+                                <td>C-002</td>
+                                <td>2021-10-09</td>
+                                <td>17.32</td>
+                                <td>1800.00</td>
+                            </tr>
+                            <tr>
+                                <td>O-001</td>
+                                <td>C-002</td>
+                                <td>2021-10-09</td>
+                                <td>17.32</td>
+                                <td>1800.00</td>
+                            </tr>
+                            <tr>
+                                <td>O-001</td>
+                                <td>C-002</td>
+                                <td>2021-10-09</td>
+                                <td>17.32</td>
+                                <td>1800.00</td>
+                            </tr>
+                            <tr>
+                                <td>O-001</td>
+                                <td>C-002</td>
+                                <td>2021-10-09</td>
+                                <td>17.32</td>
+                                <td>1800.00</td>
+                            </tr>
+                            <tr>
+                                <td>O-001</td>
+                                <td>C-002</td>
+                                <td>2021-10-09</td>
+                                <td>17.32</td>
+                                <td>1800.00</td>
+                            </tr>
+                            <tr>
+                                <td>O-001</td>
+                                <td>C-002</td>
+                                <td>2021-10-09</td>
+                                <td>17.32</td>
+                                <td>1800.00</td>
+                            </tr>
+                            <tr>
+                                <td>O-001</td>
+                                <td>C-002</td>
+                                <td>2021-10-09</td>
+                                <td>17.32</td>
+                                <td>1800.00</td>
+                            </tr>
+                            <tr>
+                                <td>O-001</td>
+                                <td>C-002</td>
+                                <td>2021-10-09</td>
+                                <td>17.32</td>
+                                <td>1800.00</td>
+                            </tr>
+                            <tr>
+                                <td>O-001</td>
+                                <td>C-002</td>
+                                <td>2021-10-09</td>
+                                <td>17.32</td>
+                                <td>1800.00</td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
@@ -565,6 +560,17 @@
         $("#cont-01").css("display","block");
         $("#cont-03").css("display","none");
         $("#cont-04").css("display","none");
+    });
+
+    /*-------------------------------------------------*/
+
+    $("#addNewItem").click(function (){
+        const id = $("#txtItemCode").val();
+        const name = $("#txtItemName").val();
+        const price = $("#txtUnitPrice").val();
+        const qty = $("#txtQty").val();
+
+        console.log(id + " : " + name + " : " + price + " : " + qty)
     });
 
 

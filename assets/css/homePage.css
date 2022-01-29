@@ -135,3 +135,20 @@ body{
     background-color: rgba(61, 61, 61, 0.4) !important;
     border:2px solid #b3b3b3 !important;
 }
+
+/*---------------------------------------------------*/
+
+.table-wrap{
+    height: 73vh;
+    overflow-y: auto;
+}
+
+.table-wrap2{
+    height: 30vh;
+    overflow-y: auto;
+}
+
+.table-wrap3{
+    height: 30vh;
+    overflow-y: auto;
+}
