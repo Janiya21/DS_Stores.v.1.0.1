@@ -158,35 +158,39 @@
                         <label for="txtQty" class="form-label">Quantity</label>
                         <input type="text" class="form-control" id="txtQty" aria-describedby="nameHelp" placeholder="Qty">
                     </div>
-                    <button class="btn btn-danger float-end mb-2 me-2"> Delete Item </button>
-                    <button class="btn btn-success float-end mb-2 me-2"> Update Item </button>
-                    <button id="addNewItem" class="btn btn-dark float-end mb-2 me-2"> Add Item </button>
+                    <button class="btn btn-danger float-end mb-2 me-2" type="button"> Delete Item </button>
+                    <button class="btn btn-success float-end mb-2 me-2" type="button"> Update Item </button>
+                    <button id="addNewItem" class="btn btn-dark float-end mb-2 me-2" type="button"> Add Item </button>
                 </form>
 
                 <section class="shadow-lg table-responsive table-wrap3">
-                    <table class="table table-bordered table-hover mt-2 text-light" style="height: 200px">
+                    <table class="table table-bordered table-hover mt-2 text-light" id="itemTable" style="height: 200px">
                         <thead class="bg-dark text-white">
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Address</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>C001</td>
-                            <td>Dasun</td>
-                            <td>Galle</td>
+                            <td>I001</td>
+                            <td>LifeBoy</td>
+                            <td>56.00</td>
+                            <td>60</td>
                         </tr>
                         <tr>
-                            <td>C002</td>
-                            <td>Kamal</td>
-                            <td>Panadura</td>
+                            <td>I001</td>
+                            <td>LifeBoy</td>
+                            <td>56.00</td>
+                            <td>60</td>
                         </tr>
                         <tr>
-                            <td>C002</td>
-                            <td>Kamal</td>
-                            <td>Panadura</td>
+                            <td>I001</td>
+                            <td>LifeBoy</td>
+                            <td>56.00</td>
+                            <td>60</td>
                         </tr>
                         </tbody>
                     </table>
@@ -220,9 +224,9 @@
                         <label for="exampleInputTelNo" class="form-label">Tel No</label>
                         <input type="text" class="form-control" id="exampleInputTelNo" aria-describedby="telHelp" placeholder="Telephone">
                     </div>
-                    <button type="submit" class="btn btn-danger float-end mb-2 me-2"> Delete Customer</button>
-                    <button type="submit" class="btn btn-success float-end mb-2 me-2"> Update Customer </button>
-                    <button type="submit" class="btn btn-dark float-end mb-2 me-2"> Add Customer </button>
+                    <button type="button" class="btn btn-danger float-end mb-2 me-2"> Delete Customer</button>
+                    <button type="button" class="btn btn-success float-end mb-2 me-2"> Update Customer </button>
+                    <button type="button" class="btn btn-dark float-end mb-2 me-2"> Add Customer </button>
                 </form>
 
                 <section class="shadow-lg table-responsive table-wrap3">
@@ -231,24 +235,28 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Address</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>C001</td>
-                            <td>Dasun</td>
-                            <td>Galle</td>
+                            <td>I001</td>
+                            <td>LifeBoy</td>
+                            <td>56.00</td>
+                            <td>60</td>
                         </tr>
                         <tr>
-                            <td>C002</td>
-                            <td>Kamal</td>
-                            <td>Panadura</td>
+                            <td>I001</td>
+                            <td>LifeBoy</td>
+                            <td>56.00</td>
+                            <td>60</td>
                         </tr>
                         <tr>
-                            <td>C002</td>
-                            <td>Kamal</td>
-                            <td>Panadura</td>
+                            <td>I001</td>
+                            <td>LifeBoy</td>
+                            <td>56.00</td>
+                            <td>60</td>
                         </tr>
                         </tbody>
                     </table>
@@ -490,9 +498,6 @@
     </div>
 </div>
 
-<!--<div class="table-responsive">
-    <table class="table table-striped table-sm">-->
-
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
@@ -570,9 +575,17 @@
         const price = $("#txtUnitPrice").val();
         const qty = $("#txtQty").val();
 
-        console.log(id + " : " + name + " : " + price + " : " + qty)
-    });
+        console.log(id + " : " + name + " : " + price + " : " + qty);
 
+        $("#itemTable").append(
+            "<tr>"+
+                "<td>" + id + "</td>" +
+                "<td>" + name + "</td>" +
+                "<td>" + price + "</td>" +
+                "<td>" + qty + "</td>" +
+            +"</tr>"
+        )
+    });
 
     /*-------------------------USING PURE JAVASCRIPT ButtonAction---------------------------*/
 
