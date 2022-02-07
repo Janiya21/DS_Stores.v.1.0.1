@@ -166,32 +166,32 @@
                 <section class="shadow-lg table-responsive table-wrap3">
                     <table class="table table-bordered table-hover mt-2 text-light" id="itemTable" style="height: 200px">
                         <thead class="bg-dark text-white">
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Unit Price</th>
-                            <th>Quantity</th>
-                        </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Unit Price</th>
+                                <th>Quantity</th>
+                            </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>I001</td>
-                            <td>LifeBoy</td>
-                            <td>56.00</td>
-                            <td>60</td>
-                        </tr>
-                        <tr>
-                            <td>I001</td>
-                            <td>LifeBoy</td>
-                            <td>56.00</td>
-                            <td>60</td>
-                        </tr>
-                        <tr>
-                            <td>I001</td>
-                            <td>LifeBoy</td>
-                            <td>56.00</td>
-                            <td>60</td>
-                        </tr>
+                        <tbody id="item-body">
+                            <tr>
+                                <td id="abc">I002</td>
+                                <td>Lux</td>
+                                <td>56.00</td>
+                                <td>60</td>
+                            </tr>
+                            <tr>
+                                <td>I003</td>
+                                <td>LifeBoy</td>
+                                <td>56.00</td>
+                                <td>60</td>
+                            </tr>
+                            <tr>
+                                <td>I004</td>
+                                <td>LifeBoy</td>
+                                <td>56.00</td>
+                                <td>60</td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
@@ -584,7 +584,29 @@
                 "<td>" + price + "</td>" +
                 "<td>" + qty + "</td>" +
             +"</tr>"
-        )
+        );
+
+        $("#item-body>tr").click(function (){
+            console.log("clicked");
+            var row = $(this).closest("tr")[0];
+            console.log(row.cells[1].innerHTML);
+
+            $("#txtItemCode").val(row.cells[0].innerHTML);
+            $("#txtItemName").val(row.cells[1].innerHTML);
+            $("#txtUnitPrice").val(row.cells[2].innerHTML);
+            $("#txtQty").val(row.cells[3].innerHTML);
+        });
+    });
+
+    $("#item-body>tr").click(function (){
+        console.log("clicked");
+        var row = $(this).closest("tr")[0];
+        console.log(row.cells[1].innerHTML);
+
+        $("#txtItemCode").val(row.cells[0].innerHTML);
+        $("#txtItemName").val(row.cells[1].innerHTML);
+        $("#txtUnitPrice").val(row.cells[2].innerHTML);
+        $("#txtQty").val(row.cells[3].innerHTML);
     });
 
     /*-------------------------USING PURE JAVASCRIPT ButtonAction---------------------------*/
