@@ -131,7 +131,8 @@
     </div>
 </div>
 <div id="cont-02" class="container" style="display: none">
-    <div class="row mt-lg-5">
+
+    <div class="row">
 
         <div class="col">
             <div class="row">
@@ -164,7 +165,7 @@
                 </form>
 
                 <section class="shadow-lg table-responsive table-wrap3">
-                    <table class="table table-bordered table-hover mt-2 text-light" id="itemTable" style="height: 200px">
+                    <table class="table table-bordered table-hover mt-2 text-light" id="itemTable">
                         <thead class="bg-dark text-white">
                             <tr>
                                 <th>ID</th>
@@ -191,28 +192,28 @@
             <div class="row two">
                 <form>
                     <div class="mb-3">
-                        <label for="customerId" class="form-label">Customer Id</label>
-                        <input type="text" class="form-control" id="customerId1" aria-describedby="telHelp" placeholder="Customer Id">
+                        <label for="txtCustomerId" class="form-label">Customer Id</label>
+                        <input type="text" class="form-control" id="txtCustomerId" aria-describedby="telHelp" placeholder="Customer Id">
                     </div>
                     <div class="mb-3">
-                        <label for="customerName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="customerName" aria-describedby="nameHelp" placeholder="Customer Name">
+                        <label for="txtCustomerName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="txtCustomerName" aria-describedby="nameHelp" placeholder="Customer Name">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email Address">
+                        <label for="txtEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" placeholder="Email Address">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputTelNo" class="form-label">Tel No</label>
-                        <input type="text" class="form-control" id="exampleInputTelNo" aria-describedby="telHelp" placeholder="Telephone">
+                        <label for="txtTelNo" class="form-label">Tel No</label>
+                        <input type="text" class="form-control" id="txtTelNo" aria-describedby="telHelp" placeholder="Telephone">
                     </div>
                     <button type="button" class="btn btn-danger float-end mb-2 me-2"> Delete Customer</button>
                     <button type="button" class="btn btn-success float-end mb-2 me-2"> Update Customer </button>
-                    <button type="button" class="btn btn-dark float-end mb-2 me-2"> Add Customer </button>
+                    <button id="addNewCustomer" type="button" class="btn btn-dark float-end mb-2 me-2"> Add Customer </button>
                 </form>
 
                 <section class="shadow-lg table-responsive table-wrap3">
-                    <table class="table table-bordered table-hover mt-2 text-light" style="height: 200px">
+                    <table class="table table-bordered table-hover mt-2 text-light" id="customerTable">
                         <thead class="bg-dark text-white">
                         <tr>
                             <th>ID</th>
@@ -221,25 +222,7 @@
                             <th>Quantity</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>I001</td>
-                            <td>LifeBoy</td>
-                            <td>56.00</td>
-                            <td>60</td>
-                        </tr>
-                        <tr>
-                            <td>I001</td>
-                            <td>LifeBoy</td>
-                            <td>56.00</td>
-                            <td>60</td>
-                        </tr>
-                        <tr>
-                            <td>I001</td>
-                            <td>LifeBoy</td>
-                            <td>56.00</td>
-                            <td>60</td>
-                        </tr>
+                        <tbody id="customer-body">
                         </tbody>
                     </table>
                 </section>
@@ -586,17 +569,17 @@
 
     $("#item-body>tr").click(function (){
 
-        let cusID = $(this).children(":eq(0)").text();
-        let cusName = $(this).children(":eq(1)").text();
-        let cusAddress = $(this).children(":eq(2)").text();
-        let cusTP = $(this).children(":eq(3)").text();
+        let itemID = $(this).children(":eq(0)").text();
+        let itemName = $(this).children(":eq(1)").text();
+        let itemPrice = $(this).children(":eq(2)").text();
+        let itemQty = $(this).children(":eq(3)").text();
 
-        console.log(cusID, cusName, cusAddress, cusTP);
+        console.log(itemID, itemName, itemPrice, itemQty);
 
-        $("#txtItemCode").val(cusID);
-        $("#txtItemName").val(cusName);
-        $("#txtUnitPrice").val(cusAddress);
-        $("#txtQty").val(cusTP);
+        $("#txtItemCode").val(itemID);
+        $("#txtItemName").val(itemName);
+        $("#txtUnitPrice").val(itemPrice);
+        $("#txtQty").val(itemQty);
 
        /*   -- Method 02 --
         console.log("clicked");
@@ -672,6 +655,38 @@
     navigateToNext("#txtUnitPrice","#txtQty");
     navigateToNext("#txtQty","#addNewItem");
 
+    /*=======================================================*/
+
+    $("#addNewCustomer").click(function (){
+        const id = $("#txtCustomerId").val();
+        const name = $("#txtCustomerName").val();
+        const email = $("#txtEmail").val();
+        const tele = $("#txtTelNo").val();
+
+        console.log(id + " : " + name + " : " + email + " : " + tele);
+
+        $("#customerTable").append(`<tr><td>${id}</td><td>${name}</td><td>${email}</td><td>${tele}</td></tr>`);
+
+        $("#customer-body>tr").click(function (){
+            let cusID = $(this).children(":eq(0)").text();
+            let cusName = $(this).children(":eq(1)").text();
+            let cusAddress = $(this).children(":eq(2)").text();
+            let cusTP = $(this).children(":eq(3)").text();
+
+            console.log(cusID, cusName, cusAddress, cusTP);
+
+            $("#txtCustomerId").val(cusID);
+            $("#txtCustomerName").val(cusName);
+            $("#txtEmail").val(cusAddress);
+            $("#txtTelNo").val(cusTP);
+        });
+    });
+
+    navigateToNext("#txt","#addNewItem");
+    navigateToNext("#txtQty","#addNewItem");
+    navigateToNext("#txtQty","#addNewItem");
+    navigateToNext("#txtQty","#addNewItem");
+
     function navigateToNext(from,to){
         $(from).keydown(function (event){
             if(event.key == "Enter"){
@@ -679,7 +694,6 @@
             }
         });
     }
-
 
 </script>
 

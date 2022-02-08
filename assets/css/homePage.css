@@ -27,6 +27,11 @@ body{
 
 /* ---------------------------- Index.html --------------------------------------- */
 
+#cont-02{
+    display: block;
+    height: 92vh;
+}
+
 @media (min-width: 992px){
     #cont-02 .mt-lg-5 {
         margin-top: 1rem!important;
@@ -56,9 +61,6 @@ body{
     color: white !important;
 }
 
-#item-body tr{
-    height: 10px;
-}
 
 
 /* ---------------------------- Index2.html --------------------------------------- */
@@ -153,6 +155,6 @@ body{
 }
 
 .table-wrap3{
-    height: 30vh;
+    height: 27vh;
     overflow-y: auto;
 }
