@@ -174,24 +174,6 @@
                             </tr>
                         </thead>
                         <tbody id="item-body">
-                            <tr>
-                                <td id="abc">I002</td>
-                                <td>Lux</td>
-                                <td>56.00</td>
-                                <td>60</td>
-                            </tr>
-                            <tr>
-                                <td>I003</td>
-                                <td>LifeBoy</td>
-                                <td>56.00</td>
-                                <td>60</td>
-                            </tr>
-                            <tr>
-                                <td>I004</td>
-                                <td>LifeBoy</td>
-                                <td>56.00</td>
-                                <td>60</td>
-                            </tr>
                         </tbody>
                     </table>
                 </section>
@@ -587,18 +569,36 @@
         );
 
         $("#item-body>tr").click(function (){
-            console.log("clicked");
-            var row = $(this).closest("tr")[0];
-            console.log(row.cells[1].innerHTML);
+            let cusID = $(this).children(":eq(0)").text();
+            let cusName = $(this).children(":eq(1)").text();
+            let cusAddress = $(this).children(":eq(2)").text();
+            let cusTP = $(this).children(":eq(3)").text();
 
-            $("#txtItemCode").val(row.cells[0].innerHTML);
-            $("#txtItemName").val(row.cells[1].innerHTML);
-            $("#txtUnitPrice").val(row.cells[2].innerHTML);
-            $("#txtQty").val(row.cells[3].innerHTML);
+            console.log(cusID, cusName, cusAddress, cusTP);
+
+            $("#txtItemCode").val(cusID);
+            $("#txtItemName").val(cusName);
+            $("#txtUnitPrice").val(cusAddress);
+            $("#txtQty").val(cusTP);
         });
     });
 
+
     $("#item-body>tr").click(function (){
+
+        let cusID = $(this).children(":eq(0)").text();
+        let cusName = $(this).children(":eq(1)").text();
+        let cusAddress = $(this).children(":eq(2)").text();
+        let cusTP = $(this).children(":eq(3)").text();
+
+        console.log(cusID, cusName, cusAddress, cusTP);
+
+        $("#txtItemCode").val(cusID);
+        $("#txtItemName").val(cusName);
+        $("#txtUnitPrice").val(cusAddress);
+        $("#txtQty").val(cusTP);
+
+       /*   -- Method 02 --
         console.log("clicked");
         var row = $(this).closest("tr")[0];
         console.log(row.cells[1].innerHTML);
@@ -607,9 +607,11 @@
         $("#txtItemName").val(row.cells[1].innerHTML);
         $("#txtUnitPrice").val(row.cells[2].innerHTML);
         $("#txtQty").val(row.cells[3].innerHTML);
+        */
+
     });
 
-    /*-------------------------USING PURE JAVASCRIPT ButtonAction---------------------------*/
+    /*------USING PURE JAVASCRIPT ButtonAction-------*/
 
    /* function isDisplay(d){
         if(d==="register"){
@@ -634,6 +636,50 @@
             document.getElementById("cont-04").style.display = 'none';
         }
     }*/
+
+    /*------ add text field events *---- */
+
+    /*$("#txtItemCode").keydown(function (event){
+
+        if(event.key == "Enter"){
+            $("#txtItemName").focus();
+        }
+    });
+
+    $("#txtItemName").keydown(function (event){
+
+        if(event.key == "Enter"){
+            $("#txtUnitPrice").focus();
+        }
+    });
+
+    $("#txtUnitPrice").keydown(function (event){
+
+        if(event.key == "Enter"){
+            $("#txtQty").focus();
+        }
+    });
+
+    $("#txtQty").keydown(function (event){
+
+        if(event.key == "Enter"){
+            $("#addNewItem").focus();
+        }
+    });*/
+
+    navigateToNext("#txtItemCode","#txtItemName");
+    navigateToNext("#txtItemName","#txtUnitPrice");
+    navigateToNext("#txtUnitPrice","#txtQty");
+    navigateToNext("#txtQty","#addNewItem");
+
+    function navigateToNext(from,to){
+        $(from).keydown(function (event){
+            if(event.key == "Enter"){
+                $(to).focus();
+            }
+        });
+    }
+
 
 </script>
 
