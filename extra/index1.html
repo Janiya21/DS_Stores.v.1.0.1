@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>D.S POS SYSTEMS</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">DS Stores</a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="index1.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="index2.html">Place Order</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="index3.html">Order History</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row mt-lg-5">
+
+        <div class="col">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #c2b09d">Register a Item</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <form action="">
+                    <div class="mb-3">
+                        <label for="itemCode" class="form-label">Item Code</label>
+                        <input type="text" class="form-control" id="itemCode" aria-describedby="nameHelp" placeholder="Item Code">
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="itemName" aria-describedby="nameHelp" placeholder="Item Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitPrice" class="form-label">Unit Price</label>
+                        <input type="text" class="form-control" id="unitPrice" aria-describedby="nameHelp" placeholder="Unit Price">
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="text" class="form-control" id="quantity" aria-describedby="nameHelp" placeholder="Qty">
+                    </div>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Delete Item </button>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Update Item </button>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Add Item </button>
+                </form>
+
+                <section class="shadow-lg">
+                    <table class="table table-bordered table-hover mt-2" style="height: 200px">
+                        <thead class="bg-dark text-white">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>C001</td>
+                            <td>Dasun</td>
+                            <td>Galle</td>
+                        </tr>
+                        <tr>
+                            <td>C002</td>
+                            <td>Kamal</td>
+                            <td>Panadura</td>
+                        </tr>
+                        <tr>
+                            <td>C002</td>
+                            <td>Kamal</td>
+                            <td>Panadura</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #c2b09d">Register a Customer</h3>
+                </div>
+            </div>
+
+            <div class="row two">
+                <form action="index2.html">
+                    <div class="mb-3">
+                        <label for="customerId" class="form-label">Customer Id</label>
+                        <input type="text" class="form-control" id="customerId" aria-describedby="telHelp" placeholder="Customer Id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="customerName" aria-describedby="nameHelp" placeholder="Customer Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email Address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputTelNo" class="form-label">Tel No</label>
+                        <input type="text" class="form-control" id="exampleInputTelNo" aria-describedby="telHelp" placeholder="Telephone">
+                    </div>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Delete Customer</button>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Update Customer </button>
+                    <button type="submit" class="btn btn-dark float-end mb-3 me-2"> Add Customer </button>
+                </form>
+
+
+                <section class="shadow-lg">
+                    <table class="table table-bordered table-hover mt-2" style="height: 200px">
+                        <thead class="bg-dark text-white">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>C001</td>
+                                <td>Dasun</td>
+                                <td>Galle</td>
+                            </tr>
+                            <tr>
+                                <td>C002</td>
+                                <td>Kamal</td>
+                                <td>Panadura</td>
+                            </tr>
+                            <tr>
+                                <td>C002</td>
+                                <td>Kamal</td>
+                                <td>Panadura</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

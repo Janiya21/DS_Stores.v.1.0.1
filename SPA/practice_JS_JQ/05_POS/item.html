@@ -1,0 +1,118 @@
+<!--/**
+* @author : Sanu Vithanage
+* @since : 0.1.0
+**/-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Form</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/styles/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light navColor">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bolder text-white brandName" href="#">Simple POS
+        </a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active text-white" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Order</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown"
+                       href="#"
+                       id="navbarDropdown" role="button">
+                        Other
+                    </a>
+                    <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
+                        <li><a class="dropdown-item" href="customer.html">Customer Manage</a></li>
+                        <li><a class="dropdown-item" href="item.html">Item Manage</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Purchase Order</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="container-fluid mt-3">
+    <section class="row mt-3 justify-content-around">
+        <div class="col-12 col-md-4">
+            <div class="shadow-sm pt-3 pb-5 px-3 py-3 mt-2">
+                <h1 class="h1 mb-3">Item Manage</h1>
+                <div class="mb-3">
+                    <label class="form-label" for="srcCusID">Search Item</label>
+                    <input class="form-control" id="srcCusID" placeholder="Customer ID, NIC, Name" type="text">
+                </div>
+                <button class="btn btn-primary">Search</button>
+                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-success">Save or Update</button>
+            </div>
+        </div>
+        <div class="col-12 col-md-5">
+            <div class="mb-3">
+                <label class="form-label" for="itemCode">Item Code</label>
+                <input class="form-control" id="itemCode" placeholder="Item Code" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="itemName">Item Name</label>
+                <input class="form-control" id="itemName" placeholder="Item Name" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="itemQty">Item Qty</label>
+                <input class="form-control" id="itemQty" placeholder="Item Qty" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="itemPrice">Item Price</label>
+                <input class="form-control" id="itemPrice" placeholder="Item Price" type="text">
+            </div>
+        </div>
+    </section>
+    <section class="row mt-4">
+        <div class="col">
+            <table class="table">
+                <thead class="bg-danger text-white">
+                <tr>
+                    <th>Item Code</th>
+                    <th>Item Name</th>
+                    <th>Item Qty</th>
+                    <th>Item Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>I001</td>
+                    <td>Lux</td>
+                    <td>200</td>
+                    <td>69</td>
+                </tr>
+                <tr>
+                    <td>I002</td>
+                    <td>Signal</td>
+                    <td>140</td>
+                    <td>120</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</section>
+
+
+<script src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>
