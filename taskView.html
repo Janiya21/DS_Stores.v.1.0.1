@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta name="keywords" content="IJSE, Software Engineering">
+            <meta name="description" content="My Testing website">
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+
+            <title>Profile - Janith Sandaru</title>
+            <link rel="stylesheet" href="assets/css/normalize.css">
+            <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" type='text/css'>
+
+        <style>
+
+            body{
+                background-position: -15% 20%;
+                background-color: #000000;
+                /*background-image:  linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.8)) , url("assets/images/dark2.jpg");*/
+                color: white;
+                margin: 0;
+            }
+
+            main{
+                position: absolute;
+                width: 90vw;
+                height: 97vh;
+                left: 5vw;
+                overflow: hidden;
+                background-color: transparent;
+                /*border: 5px solid white;*/
+            }
+
+            .project-slider{
+                position: absolute;
+                width: 180vw;
+                flex-direction: column;
+                height: 95vh;
+                display: flex;
+                transition: all 0.4s;
+                color: #c5c5c5;
+                gap: 10px;
+            }
+
+            .slideView {
+                height: 75vh;
+                display: flex;
+                top: 19vh;
+                left: 5vw;
+                gap: 3vw;
+            }
+
+            .slideView >section{
+                width: 20vw;
+                height: 47vh;
+                background-color: rgba(125, 125, 125, 0.4);
+                border-radius: 40px
+            }
+
+            .slideView  >section > h2{
+                padding-left: 2.2vw;
+                font-size: 1.2em;
+            }
+
+            .slideView  >section > img{
+                width: 16vw;
+                height: 19vh;
+                filter: brightness(85%) contrast(120%) saturate(150%);
+                margin-left: 2vw;
+                border-radius: 8%;
+            }
+
+            .slideView  >section > ul{
+                list-style-type: none;
+                padding-left: 1vw;
+                height: 5vh;
+            }
+
+            .slideView  >section > ul > li{
+                margin-top: 13px;
+                font-size: 0.8em;
+            }
+
+            .slideView  >section > ul > li > i{
+                margin-right: 10px;
+            }
+
+            .left-sliding{
+                width:30px;
+                transform: rotate(90deg);
+                position: absolute;
+                right: 10px;
+                top: 48%;
+                background-color: #404040;
+                border: unset;
+            }
+
+            .right-sliding{
+                width:30px;
+                transform: rotate(270deg);
+                position: absolute;
+                left: 10px;
+                top: 48%;
+                background-color: #404040;
+                border: unset;
+            }
+
+            .slideView  >section >p{
+                position: absolute;
+                padding-left: 1vw;
+                font-size: 0.8em;
+                width: 19vw;
+            }
+
+            .slideView  >section >p> i{
+                padding-right: 10px;
+            }
+
+            .slideView  >section >p> a{
+                text-decoration: none;
+                color: #0074D9;
+                padding-left: 20px;
+                position: relative;
+                top: 1vh;
+                font-size: 1.2em;
+            }
+
+            .underline{
+                position: relative;
+            }
+
+            .underline::before{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 0;
+                height: 2px;
+                background-color: #0074D9;
+                transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+            .underline:hover::before{
+                    left: 1vw;
+                    right: auto;
+                    width: 100%;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <span class="btn left-sliding" > <img src="assets/img/arrow.png" alt="left" width="30px"></span>
+        <span class="btn right-sliding"> <img src="assets/img/arrow.png" alt="left" width="30px"></span>
+
+        <main>
+            <div class="project-slider">
+                <div class="slideView first-group">
+                    <section>
+                        <h2>Task 01</h2>
+                        <img src="assets/img/task01.png" alt=""/>
+                        <ul>
+                            <li><i class="fa fa-code" aria-hidden="true"></i>Javascript</li>
+                            <li><i class="fa fa-code" aria-hidden="true"></i>Mouse Events with JQuery </li>
+                        </ul>
+                        <p>
+                            <i class="fa fa-code-fork" aria-hidden="true"></i>
+                            You can find the source code on<br>
+                            <a href="SPA/task_01.html" class="underline">go to Assignment 01</a>
+                        </p>
+                    </section>
+
+                </div>
+            </div>
+        </main>
+
+    <script>
+        const slider = document.querySelector('.project-slider');
+
+        const leftArrow = document.querySelector('.left-sliding');
+        const rightArrow = document.querySelector('.right-sliding');
+
+        leftArrow.addEventListener('click', function() {
+            slider.style.transform = 'translate(-90vw)';
+        });
+
+        rightArrow.addEventListener('click', function() {
+            slider.style.transform = 'translate(0vw)';
+        });
+    </script>
+    </body>
+</html>
