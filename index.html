@@ -683,10 +683,10 @@
         });
     });
 
-    navigateToNext("#txt","#addNewItem");
-    navigateToNext("#txtQty","#addNewItem");
-    navigateToNext("#txtQty","#addNewItem");
-    navigateToNext("#txtQty","#addNewItem");
+    navigateToNext("#txtCustomerId","#txtCustomerName");
+    navigateToNext("#txtCustomerName","#txtEmail");
+    navigateToNext("#txtEmail","#txtTelNo");
+    navigateToNext("#txtTelNo","#addNewCustomer");
 
     function navigateToNext(from,to){
         $(from).keydown(function (event){
