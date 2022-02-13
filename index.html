@@ -555,8 +555,8 @@
 
         console.log(id + " : " + name + " : " + price + " : " + qty);
 
-        if( ($("#req-txtItemCode").text() === '') && ($("#req-txtItemName").text() === '') && ($("#req-txtItemPrice").text() === '')
-            && ($("#req-txtItemQty").text() === '')){
+        if( ($("#req-txtItemCode").text() === '') && ($("#txtItemCode").length === 0) && ($("#req-txtItemName").text() === '') && ($("#txtItemName").length === 0)
+            && ($("#req-txtItemPrice").text() === '') && ($("#txtUnitPrice").length === 0) && ($("#req-txtItemQty").text() === '') && ($("#txtQty").length === 0)){
 
             $("#itemTable").append(
                 "<tr>"+
@@ -687,8 +687,8 @@
 
         console.log(id + " : " + name + " : " + email + " : " + tele);
 
-        if( ($("#req-txtCusId").text() === '') && ($("#req-txtCusName").text() === '') && ($("#req-txtCusAddress").text() === '')
-            && ($("#req-txtCusTel").text() === '')){
+        if( ($("#req-txtCusId").text() === '') && ($("#txtCustomerId").length === 0) && ($("#req-txtCusName").text() === '') && ($("#txtCustomerName").length === 0)
+            && ($("#req-txtCusAddress").text() === '') && ($("#txtEmail").length === 0) && ($("#req-txtCusTel").text() === '') && ($("#txtQty").length === 0)){
 
             $("#customerTable").append(`<tr><td>${id}</td><td>${name}</td><td>${email}</td><td>${tele}</td></tr>`);
 
