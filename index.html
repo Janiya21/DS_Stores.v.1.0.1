@@ -138,14 +138,14 @@
         <div class="col">
             <div class="row">
                 <div class="col-md-6">
-                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #c2b09d">Register a Item</h3>
+                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" id="reg-item-head" style="color: #c2b09d">Register a Item</h3>
                 </div>
             </div>
 
             <div class="row">
                 <form>
                     <div class="mb-3">
-                        <label for="txtItemCode" class="form-label">Item Code</label>
+                        <label for="txtItemCode" id="lblItemId" class="form-label">Item Code</label>
                         <input type="text" class="form-control" id="txtItemCode" aria-describedby="nameHelp" placeholder="Item Code">
                     </div>
                     <div class="mb-3">
@@ -468,6 +468,26 @@
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 
+    $("#txtItemCode").keyup(function (){
+
+        let word = $("#txtItemCode").val();
+
+        console.log("typed : "+word);
+
+        /*let regEx = /^(C00-)[0-9]{3,4}$/*/
+
+        let regEx = /^[0-9]{3}$/
+        let correct = regEx.test(word);
+
+        if(correct){
+            console.log(" ? " + correct);
+            $("#lblItemId").css('border','1px solid green');
+        }else{
+            console.log(" ? " + correct);
+            $("#lblItemId").css('border','1px solid red');
+        }
+    });
+
     /*-------------------------USING PURE JAVASCRIPT---------------------------*/
 
     /*document.getElementById("register").addEventListener("click", function (){
@@ -536,6 +556,9 @@
     /*-------------------------------------------------*/
 
     $("#addNewItem").click(function (){
+
+        $("#item-body>tr").off();
+
         const id = $("#txtItemCode").val();
         const name = $("#txtItemName").val();
         const price = $("#txtUnitPrice").val();
@@ -564,6 +587,16 @@
             $("#txtItemName").val(cusName);
             $("#txtUnitPrice").val(cusAddress);
             $("#txtQty").val(cusTP);
+        });
+
+        $("#item-body>tr").dblclick(function (){
+           $(this).remove();
+
+            $("#txtItemCode").val(null);
+            $("#txtItemName").val(null);
+            $("#txtUnitPrice").val(null);
+            $("#txtQty").val(null);
+
         });
     });
 
@@ -695,6 +728,15 @@
             }
         });
     }
+
+    /*----- Remove Double clicked Row --------------*/
+
+    let count;
+
+    /*$("#item-body>tr").on('click',function (){
+        console.log("fuked");
+    });*/
+
 
 </script>
 
