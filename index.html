@@ -147,18 +147,22 @@
                     <div class="mb-3">
                         <label for="txtItemCode" id="lblItemId" class="form-label">Item Code</label>
                         <input type="text" class="form-control" id="txtItemCode" aria-describedby="nameHelp" placeholder="Item Code">
+                        <p class="text-danger float-end txtReq" id="req-txtItemCode"></p>
                     </div>
                     <div class="mb-3">
                         <label for="txtItemName" class="form-label">Name</label>
                         <input type="text" class="form-control" id="txtItemName" aria-describedby="nameHelp" placeholder="Item Name">
+                        <p class="text-danger float-end txtReq" id="req-txtItemName"></p>
                     </div>
                     <div class="mb-3">
                         <label for="txtUnitPrice" class="form-label">Unit Price</label>
                         <input type="text" class="form-control" id="txtUnitPrice" aria-describedby="nameHelp" placeholder="Unit Price">
+                        <p class="text-danger float-end txtReq" id="req-txtItemPrice"></p>
                     </div>
                     <div class="mb-3">
                         <label for="txtQty" class="form-label">Quantity</label>
                         <input type="text" class="form-control" id="txtQty" aria-describedby="nameHelp" placeholder="Qty">
+                        <p class="text-danger float-end txtReq" id="req-txtItemQty"></p>
                     </div>
                     <button class="btn btn-danger float-end mb-2 me-2" type="button"> Delete Item </button>
                     <button class="btn btn-success float-end mb-2 me-2" type="button"> Update Item </button>
@@ -468,28 +472,7 @@
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 
-    $("#txtItemCode").keyup(function (){
-
-        let word = $("#txtItemCode").val();
-
-        console.log("typed : "+word);
-
-        /*let regEx = /^(C00-)[0-9]{3,4}$/*/
-
-        let regEx = /^[0-9]{3}$/
-        let correct = regEx.test(word);
-
-        if(correct){
-            console.log(" ? " + correct);
-            $("#lblItemId").css('border','1px solid green');
-        }else{
-            console.log(" ? " + correct);
-            $("#lblItemId").css('border','1px solid red');
-        }
-    });
-
     /*-------------------------USING PURE JAVASCRIPT---------------------------*/
-
     /*document.getElementById("register").addEventListener("click", function (){
 
         document.getElementById("cont-02").style.display = 'inherit';
@@ -522,6 +505,8 @@
         document.getElementById("cont-04").style.display = 'none';
 
     });*/
+
+
 
     /*-------------------------USING JQuery---------------------------*/
 
@@ -600,7 +585,6 @@
         });
     });
 
-
     $("#item-body>tr").click(function (){
 
         let itemID = $(this).children(":eq(0)").text();
@@ -625,11 +609,9 @@
         $("#txtUnitPrice").val(row.cells[2].innerHTML);
         $("#txtQty").val(row.cells[3].innerHTML);
         */
-
     });
 
     /*------USING PURE JAVASCRIPT ButtonAction-------*/
-
    /* function isDisplay(d){
         if(d==="register"){
             document.getElementById("cont-02").style.display = 'inherit';
@@ -654,8 +636,8 @@
         }
     }*/
 
-    /*------ add text field events *---- */
 
+    /*------ add text field events *---- */
     /*$("#txtItemCode").keydown(function (event){
 
         if(event.key == "Enter"){
@@ -684,11 +666,6 @@
         }
     });*/
 
-    navigateToNext("#txtItemCode","#txtItemName");
-    navigateToNext("#txtItemName","#txtUnitPrice");
-    navigateToNext("#txtUnitPrice","#txtQty");
-    navigateToNext("#txtQty","#addNewItem");
-
     /*=======================================================*/
 
     $("#addNewCustomer").click(function (){
@@ -699,7 +676,10 @@
 
         console.log(id + " : " + name + " : " + email + " : " + tele);
 
-        $("#customerTable").append(`<tr><td>${id}</td><td>${name}</td><td>${email}</td><td>${tele}</td></tr>`);
+        if($(req).text() === ''){
+
+        }
+            $("#customerTable").append(`<tr><td>${id}</td><td>${name}</td><td>${email}</td><td>${tele}</td></tr>`);
 
         $("#customer-body>tr").click(function (){
             let cusID = $(this).children(":eq(0)").text();
@@ -716,26 +696,83 @@
         });
     });
 
-    navigateToNext("#txtCustomerId","#txtCustomerName");
-    navigateToNext("#txtCustomerName","#txtEmail");
-    navigateToNext("#txtEmail","#txtTelNo");
-    navigateToNext("#txtTelNo","#addNewCustomer");
+    /*------- TextField-regEx error and red-req Display -02 -------------*/
 
-    function navigateToNext(from,to){
-        $(from).keydown(function (event){
-            if(event.key == "Enter"){
-                $(to).focus();
+    function validate(regEx,textField,req){
+
+        $(textField).keyup(function (){
+
+            let word = $(textField).val();
+
+            console.log("typed : "+word);
+
+            let correct = regEx.test(word);
+
+            if(correct){
+                console.log(" ? " + correct);
+                $(textField).css('border','1px solid green');
+                $(req).text("");
+
+            }else{
+                console.log(" ? " + correct);
+                $(textField).css('border','1px solid red');
+                $(req).text("valid input required");
             }
         });
     }
 
-    /*----- Remove Double clicked Row --------------*/
+    function navigateToNext(from,to,req){
 
-    let count;
+        $(from).keyup(function (event){
+            if(event.key == "Enter"){
+                if($(req).text() === '') {
+                    $(to).focus();
+                }
+            }
+        });
+    }
 
-    /*$("#item-body>tr").on('click',function (){
-        console.log("fuked");
+    /*------- TextField-regEx error and red-req Display -01 -------------*/
+    /*$(".txtReq").css('display','none');
+
+    $("#txtItemCode").keyup(function (){
+
+        let word = $("#txtItemCode").val();
+
+        console.log("typed : "+word);
+
+        /!*let regEx = /^(C00-)[0-9]{3,4}$/!*!/
+
+        let regEx = /^[0-9]{3}$/
+        let correct = regEx.test(word);
+
+        if(correct){
+            console.log(" ? " + correct);
+            $("#txtItemCode").css('border','1px solid green');
+            $("#req-txtItemCode").css('display','none');
+        }else{
+            console.log(" ? " + correct);
+            $("#txtItemCode").css('border','1px solid red');
+            $("#req-txtItemCode").css('display','block');
+        }
     });*/
+
+    /*--------------- Calling Functions -----------------*/
+
+    validate(/^(C00-)[0-9]{3,4}$/,"#txtItemCode","#req-txtItemCode");
+    validate(/^[a-zA-Z]{2,10}$/,"#txtItemName","#req-txtItemName");
+    validate(/^[0-9]{2,8}$/,"#txtUnitPrice","#req-txtItemPrice");
+    validate(/^[0-9]{1,5}$/,"#txtQty","#req-txtItemQty");
+
+    navigateToNext("#txtItemCode","#txtItemName","#req-txtItemCode");
+    navigateToNext("#txtItemName","#txtUnitPrice","#req-txtItemName");
+    navigateToNext("#txtUnitPrice","#txtQty","#req-txtItemPrice");
+    navigateToNext("#txtQty","#addNewItem","#req-txtItemQty");
+
+    navigateToNext("#txtCustomerId","#txtCustomerName","#req-txtItemCode");
+    navigateToNext("#txtCustomerName","#txtEmail","#req-txtItemCode");
+    navigateToNext("#txtEmail","#txtTelNo","#req-txtItemCode");
+    navigateToNext("#txtTelNo","#addNewCustomer","#req-txtItemCode");
 
 
 </script>
