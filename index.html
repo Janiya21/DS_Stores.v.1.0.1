@@ -769,6 +769,56 @@
         }
     });*/
 
+
+
+    // CRUD OPERATIONS START
+    function loadAllCustomers() {
+        $("#customerTable").empty();
+        for (var i of customerDB) {
+            /*create a html row*/
+            let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.address}</td><td>${i.salary}</td></tr>`;
+            /*select the table body and append the row */
+            $("#customerTable").append(row);
+        }
+    }
+
+    function saveCustomer() {
+        //gather customer information
+        let customerID = $("#txtCusID").val();
+        let customerName = $("#txtCusName").val();
+        let customerAddress = $("#txtCusAddress").val();
+        let customerSalary = $("#txtCusSalary").val();
+
+        //create Object
+        var customerObject = {
+            id: customerID,
+            name: customerName,
+            address: customerAddress,
+            salary: customerSalary
+        };
+
+        customerDB.push(customerObject);
+    }
+
+    function searchCustomer(id) {
+        for (let i = 0; i < customerDB.length; i++) {
+            if (customerDB[i].id == id) {
+                return customerDB[i];
+            }
+        }
+    }
+
+    function deleteCustomer(){
+        //write the code
+    }
+
+    function updateCustomer(){
+        //write the code
+    }
+
+    // CRUD OPERATIONS ENDED
+
+
     /*--------------- Calling Functions -----------------*/
 
     validate(/^(I00-)[0-9]{3,4}$/,"#txtItemCode","#req-txtItemCode");
