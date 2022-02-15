@@ -474,6 +474,8 @@
 
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
+<script src="db/DB.js"></script>
+
 <script>
 
     /*-------------------------USING PURE JAVASCRIPT---------------------------*/
@@ -555,8 +557,17 @@
 
         console.log(id + " : " + name + " : " + price + " : " + qty);
 
-        if( ($("#req-txtItemCode").text() === '') && ($("#txtItemCode").length === 0) && ($("#req-txtItemName").text() === '') && ($("#txtItemName").length === 0)
-            && ($("#req-txtItemPrice").text() === '') && ($("#txtUnitPrice").length === 0) && ($("#req-txtItemQty").text() === '') && ($("#txtQty").length === 0)){
+        let itemArray = {
+            itemID:id,
+            itemName:name,
+            itemPrice:price,
+            itemQty:qty
+        };
+
+        items.push(itemArray);
+
+        if( ($("#req-txtItemCode").text() === '') && (id !== "") && ($("#req-txtItemName").text() === '') && (name !=="")
+            && ($("#req-txtItemPrice").text() === '') && (price !=="") && ($("#req-txtItemQty").text() === '') && (qty !=="")){
 
             $("#itemTable").append(
                 "<tr>"+
@@ -687,8 +698,8 @@
 
         console.log(id + " : " + name + " : " + email + " : " + tele);
 
-        if( ($("#req-txtCusId").text() === '') && ($("#txtCustomerId").length === 0) && ($("#req-txtCusName").text() === '') && ($("#txtCustomerName").length === 0)
-            && ($("#req-txtCusAddress").text() === '') && ($("#txtEmail").length === 0) && ($("#req-txtCusTel").text() === '') && ($("#txtQty").length === 0)){
+        if( ($("#req-txtCusId").text() === '') && (id !== "") && ($("#req-txtCusName").text() === '') && (name !== "")
+            && ($("#req-txtCusAddress").text() === '') && (email !== "") && ($("#req-txtCusTel").text() === '') && (tele !== "")){
 
             $("#customerTable").append(`<tr><td>${id}</td><td>${name}</td><td>${email}</td><td>${tele}</td></tr>`);
 
@@ -769,15 +780,13 @@
         }
     });*/
 
-
-
     // CRUD OPERATIONS START
-    function loadAllCustomers() {
+    /*function loadAllCustomers() {
         $("#customerTable").empty();
         for (var i of customerDB) {
-            /*create a html row*/
+            /!*create a html row*!/
             let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.address}</td><td>${i.salary}</td></tr>`;
-            /*select the table body and append the row */
+            /!*select the table body and append the row *!/
             $("#customerTable").append(row);
         }
     }
@@ -817,7 +826,7 @@
     }
 
     // CRUD OPERATIONS ENDED
-
+*/
 
     /*--------------- Calling Functions -----------------*/
 
