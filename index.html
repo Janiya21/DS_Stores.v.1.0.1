@@ -569,14 +569,7 @@
         if( ($("#req-txtItemCode").text() === '') && (id !== "") && ($("#req-txtItemName").text() === '') && (name !=="")
             && ($("#req-txtItemPrice").text() === '') && (price !=="") && ($("#req-txtItemQty").text() === '') && (qty !=="")){
 
-            $("#itemTable").append(
-                "<tr>"+
-                "<td>" + id + "</td>" +
-                "<td>" + name + "</td>" +
-                "<td>" + price + "</td>" +
-                "<td>" + qty + "</td>" +
-                +"</tr>"
-            );
+                addNewItem();
 
         }else{
             alert("Please check all inputs in item form");
@@ -606,6 +599,13 @@
 
         });
     });
+
+    function addNewItem(){
+        let i = items.length -1;
+
+        $("#itemTable").append(`<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}
+            </td><td>${items[i].itemQty}</td></tr>`);
+    }
 
     $("#item-body>tr").click(function (){
 
