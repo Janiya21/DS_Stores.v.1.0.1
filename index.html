@@ -133,16 +133,16 @@
 </div>
 <div id="cont-02" class="container" style="display: none">
 
-    <div class="row">
+    <div class="row" style="height: 90vh">
 
-        <div class="col">
+        <div class="col" style="height: 90vh">
             <div class="row">
                 <div class="col-md-6">
-                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" id="reg-item-head" style="color: #c2b09d">Register a Item</h3>
+                    <h3 class="mx-auto mt-lg-2 text-lg-center ms-5" id="reg-item-head" style="color: #c2b09d">Register a Item</h3>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" style="height: 84vh">
                 <form>
                     <div class="mb-3">
                         <label for="txtItemCode" id="lblItemId" class="form-label">Item Code</label>
@@ -164,9 +164,18 @@
                         <input type="text" class="form-control" id="txtQty" aria-describedby="nameHelp" placeholder="Qty">
                         <p class="text-danger float-end txtReq" id="req-txtItemQty"></p>
                     </div>
-                    <button class="btn btn-danger float-end mb-2 me-2" type="button"> Delete Item </button>
-                    <button class="btn btn-success float-end mb-2 me-2" type="button"> Update Item </button>
-                    <button id="addNewItem" class="btn btn-dark float-end mb-2 me-2" type="button"> Add Item </button>
+
+                    <div class="row mt-5">
+                        <div class="col-3 float-start mt-2">
+                            <input type="text" class="form-control" style="width: 10vw" id="txtSearchItem" aria-describedby="nameHelp" placeholder="Search Item">
+                        </div>
+                        <div class="col float-end mt-2">
+                            <button class="btn btn-danger float-end mb-2 me-2" type="button"> Delete Item </button>
+                            <button class="btn btn-success float-end mb-2 me-2" type="button"> Update Item </button>
+                            <button id="addNewItem" class="btn btn-dark float-end mb-2 me-2" type="button"> Add Item </button>
+                            <button id="btnSrchItem" class="btn btn-warning me-5 mb-2 me-2" type="button"> Search </button>
+                        </div>
+                    </div>
                 </form>
 
                 <section class="shadow-lg table-responsive table-wrap3">
@@ -187,14 +196,15 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col" style="height: 90vh">
+
             <div class="row">
                 <div class="col-md-6">
-                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #c2b09d">Register a Customer</h3>
+                    <h3 class="mx-auto mt-lg-2 text-lg-center ms-5" style="color: #c2b09d">Register a Customer</h3>
                 </div>
             </div>
 
-            <div class="row two">
+            <div class="row two" style="height: 84vh">
                 <form>
                     <div class="mb-3">
                         <label for="txtCustomerId" class="form-label">Customer Id</label>
@@ -216,9 +226,19 @@
                         <input type="text" class="form-control" id="txtTelNo" aria-describedby="telHelp" placeholder="Telephone">
                         <p class="text-danger float-end txtReq" id="req-txtCusTel"></p>
                     </div>
-                    <button type="button" class="btn btn-danger float-end mb-2 me-2"> Delete Customer</button>
-                    <button type="button" class="btn btn-success float-end mb-2 me-2"> Update Customer </button>
-                    <button id="addNewCustomer" type="button" class="btn btn-dark float-end mb-2 me-2"> Add Customer </button>
+
+                    <div class="row mt-5">
+                        <div class="col-3 float-start mt-2">
+                            <input type="text" class="form-control" style="width: 10vw" id="txtSearchCustomer" aria-describedby="nameHelp" placeholder="Search Item">
+                        </div>
+
+                        <div class="col float-end mt-2">
+                            <button type="button" class="btn btn-danger float-end mb-2 me-2"> Delete Cust</button>
+                            <button type="button" class="btn btn-success float-end mb-2 me-2"> Update Cust </button>
+                            <button id="addNewCustomer" type="button" class="btn btn-dark float-end mb-2 me-2"> Add Cust</button>
+                            <button id="btnSrchCustomer" class="btn btn-warning me-5 mb-2 me-2" type="button"> Search </button>
+                        </div>
+                    </div>
                 </form>
 
                 <section class="shadow-lg table-responsive table-wrap3">
@@ -614,6 +634,30 @@
             $("#itemTable").append(row);
         }
     }
+
+    $("#btnSrchItem").click(function (){
+        let id = $("#txtSearchItem").val();
+        if(id === ""){
+            alert("Please insert a search-value");
+        }else{
+
+            let value = null;
+            value = items.find(function (e){
+                if(e.itemID === id){
+                    return e;
+                }
+            });
+
+            if(value != null){
+                $("#txtItemCode").val(value.itemID);
+                $("#txtItemName").val(value.itemName);
+                $("#txtUnitPrice").val(value.itemPrice);
+                $("#txtQty").val(value.itemQty);
+            }else{
+                alert("Nothing here lik this");
+            }
+        }
+    });
 
     $("#item-body>tr").click(function (){
 
