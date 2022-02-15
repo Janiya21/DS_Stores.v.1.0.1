@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 01</title>
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        body{
+            background-color: #196844;
+        }
+
+        h1{
+            color: white;
+            position: relative;
+            top: 20vh;
+            left: 35vw;
+        }
+
+        .center{
+            position: relative;
+            top: 30vh;
+            width: 65vw;
+            left: 15vw;
+        }
+
+        .row{
+            height: 6vh;
+            position: relative;
+        }
+
+        .square{
+            position: relative;
+            height: 6vh;
+            width: 10vw;
+            border: 1px solid #5c5c5c;
+        }
+
+        #sq02, #sq03, #sq04, #sq05{
+            left: 10vw;
+        }
+        #sq06{
+            left: 53vw;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1> Java Script Queue</h1>
+
+<div class="center">
+    <div class="row">
+        <div id="sq01" class="square sq01 ms-3"> </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div id="sq02" class="square ms-3"> </div>
+        <div id="sq03" class="square ms-3"> </div>
+        <div id="sq04" class="square ms-3"> </div>
+        <div id="sq05" class="square ms-3"> </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div id="sq06" class="square ms-3"> </div>
+    </div>
+    <hr>
+</div>
+
+<script src="../assets/jQuery/jquery-3.6.0.min.js"></script>
+<script>
+
+    let colors;
+
+    setInterval(changeColors,200);
+
+    let count=0;
+
+    function changeColors(){
+        if(count===0){
+            colors = ["blue", "pink", "green", "orange", "red", "purple"];
+            count++;
+        }else if(count===1){
+            colors = ["pink", "green", "orange", "red", "purple", "blue"];
+            count++;
+        }else if(count===2){
+            colors = ["green", "orange", "red", "purple", "blue", "pink"];
+            count++;
+        }else if(count===3){
+            colors = ["orange", "red", "purple", "blue", "pink", "green"];
+            count++;
+        }else if(count===4){
+            colors = ["red", "purple", "blue", "pink", "green", "orange"];
+            count++;
+        }else if(count===5){
+            colors = ["purple", "blue", "pink", "green", "orange", "red"];
+            count++;
+        }else{
+            count=0;
+        }
+
+        $("#sq01").css('background-color',colors[5]);
+        $("#sq02").css('background-color',colors[4]);
+        $("#sq03").css('background-color',colors[3]);
+        $("#sq04").css('background-color',colors[2]);
+        $("#sq05").css('background-color',colors[1]);
+        $("#sq06").css('background-color',colors[0]);
+    }
+
+    /*let countColor=0;
+
+    function changeColors(){
+
+        let i=0;
+
+        if(countColor<6){
+            $(ids[i]).css('background-color',colors[i++ - countColor]);
+            $(ids[i]).css('background-color',colors[i++ - countColor]);
+            $(ids[i]).css('background-color',colors[i++ - countColor]);
+            $(ids[i]).css('background-color',colors[i++ - countColor]);
+            $(ids[i]).css('background-color',colors[i++ - countColor]);
+            $(ids[i]).css('background-color',colors[i++ - countColor]);
+            countColor++;
+        }else{
+            countColor=0;
+        }
+    }*/
+
+</script>
+</body>
+</html>

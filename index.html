@@ -640,7 +640,6 @@
         if(id === ""){
             alert("Please insert a search-value");
         }else{
-
             let value = null;
             value = items.find(function (e){
                 if(e.itemID === id){
@@ -654,6 +653,10 @@
                 $("#txtUnitPrice").val(value.itemPrice);
                 $("#txtQty").val(value.itemQty);
             }else{
+                $("#txtItemCode").val(null);
+                $("#txtItemName").val(null);
+                $("#txtUnitPrice").val(null);
+                $("#txtQty").val(null);
                 alert("Nothing here lik this");
             }
         }
