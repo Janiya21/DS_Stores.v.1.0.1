@@ -569,7 +569,7 @@
         if( ($("#req-txtItemCode").text() === '') && (id !== "") && ($("#req-txtItemName").text() === '') && (name !=="")
             && ($("#req-txtItemPrice").text() === '') && (price !=="") && ($("#req-txtItemQty").text() === '') && (qty !=="")){
 
-                addNewItem();
+                addNewItemToTable();
 
         }else{
             alert("Please check all inputs in item form");
@@ -600,11 +600,19 @@
         });
     });
 
-    function addNewItem(){
+    function addNewItemToTable(){
         let i = items.length -1;
 
-        $("#itemTable").append(`<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}
-            </td><td>${items[i].itemQty}</td></tr>`);
+        let row = `<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}</td><td>${items[i].itemQty}</td></tr>`;
+        $("#itemTable").append(row);
+    }
+
+    function loadAllItemsToTable(){
+        $("#itemTable").empty();
+        for(const i in items) {
+            let row = `<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}</td><td>${items[i].itemQty}</td></tr>`;
+            $("#itemTable").append(row);
+        }
     }
 
     $("#item-body>tr").click(function (){
