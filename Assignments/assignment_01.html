@@ -15,6 +15,7 @@
             position: relative;
             top: 20vh;
             left: 35vw;
+            display: inline;
         }
 
         .center{
@@ -79,25 +80,27 @@
     function changeColors(){
         if(count===0){
             colors = ["blue", "pink", "green", "orange", "red", "purple"];
-            count++;
+
         }else if(count===1){
             colors = ["pink", "green", "orange", "red", "purple", "blue"];
-            count++;
+
         }else if(count===2){
             colors = ["green", "orange", "red", "purple", "blue", "pink"];
-            count++;
+
         }else if(count===3){
             colors = ["orange", "red", "purple", "blue", "pink", "green"];
-            count++;
+
         }else if(count===4){
             colors = ["red", "purple", "blue", "pink", "green", "orange"];
-            count++;
+
         }else if(count===5){
             colors = ["purple", "blue", "pink", "green", "orange", "red"];
-            count++;
+
         }else{
-            count=0;
+            count=-1;
         }
+
+        count++;
 
         $("#sq01").css('background-color',colors[5]);
         $("#sq02").css('background-color',colors[4]);

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 02</title>
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .row{
+            position: relative;
+            top: 40vh;
+            left: 12vw;
+            display: flex;
+        }
+
+        .row div{
+            width: 15vw;
+            height: 12vh;
+            border: 2px solid black;
+        }
+
+        #start{
+            left: 35vw;
+        }
+
+        #stop{
+            left: 40vw;
+        }
+
+        button{
+            position: relative;
+            top: 45vh;
+            width: 10vw;
+            height: 5vh;
+        }
+
+    </style>
+</head>
+<body>
+<div class="row">
+    <div id="sq01"></div>
+    <div id="sq02"></div>
+    <div id="sq03"></div>
+    <div id="sq04"></div>
+    <div id="sq05"></div>
+</div>
+
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+
+<script src="../assets/jQuery/jquery-3.6.0.min.js"></script>
+<script>
+
+    let id;
+
+    $("#start").click(function (){
+        id = setInterval(turnColorOn,100);
+    });
+
+    $("#stop").click(function (){
+        clearInterval(id);
+    });
+
+    let count=0;
+
+    let colorArray = ["#cc0000","#990000","#993333","#d98c8c","#ecc6c6"];
+
+    function turnColorOn(event){
+
+        if(count===1){
+            $("#sq01").css('background-color','#cc0000');
+        }
+        if(count===2){
+            $("#sq01").css('background-color','#990000');
+            $("#sq02").css('background-color','#cc0000');
+        }
+        if(count===3){
+            $("#sq01").css('background-color','#993333');
+            $("#sq02").css('background-color','#990000');
+            $("#sq03").css('background-color','#cc0000');
+        }
+        if(count===4){
+            $("#sq01").css('background-color','#ecc6c6');
+            $("#sq02").css('background-color','#993333');
+            $("#sq03").css('background-color','#990000');
+            $("#sq04").css('background-color','#cc0000');
+        }
+        if(count===5){
+            $("#sq01").css('background-color','#ecc6c6');
+            $("#sq02").css('background-color','#d98c8c');
+            $("#sq03").css('background-color','#993333');
+            $("#sq04").css('background-color','#990000');
+            $("#sq05").css('background-color','#cc0000');
+        }
+        if(count===6){
+            $("#sq01").css('background-color','white');
+            $("#sq02").css('background-color','white');
+            $("#sq03").css('background-color','white');
+            $("#sq04").css('background-color','white');
+            $("#sq05").css('background-color','white');
+        }
+
+        if(count===7){
+            $("#sq05").css('background-color','#cc0000');
+        }
+        if(count===8){
+            $("#sq05").css('background-color','#990000');
+            $("#sq04").css('background-color','#cc0000');
+        }
+        if(count===9){
+            $("#sq05").css('background-color','#993333');
+            $("#sq04").css('background-color','#990000');
+            $("#sq03").css('background-color','#cc0000');
+        }
+        if(count===10){
+            $("#sq05").css('background-color','#d98c8c');
+            $("#sq04").css('background-color','#993333');
+            $("#sq03").css('background-color','#990000');
+            $("#sq02").css('background-color','#cc0000');
+        }
+        if(count===11){
+            $("#sq05").css('background-color','#ecc6c6');
+            $("#sq04").css('background-color','#d98c8c');
+            $("#sq03").css('background-color','#993333');
+            $("#sq02").css('background-color','#990000');
+            $("#sq01").css('background-color','#cc0000');
+        }
+        if(count===12){
+            $("#sq01").css('background-color','white');
+            $("#sq02").css('background-color','white');
+            $("#sq03").css('background-color','white');
+            $("#sq04").css('background-color','white');
+            $("#sq05").css('background-color','white');
+        }
+        if(count>12){
+            count=-1;
+        }
+        count++;
+    }
+</script>
+</body>
+</html>
