@@ -34,6 +34,47 @@
             height: 5vh;
         }
 
+        @keyframes changeColors {
+            0%,18%{
+                background-color: #cc0000;
+            }
+            18%,36%{
+                background-color: #990000;
+            }
+            36%,54%{
+                background-color: #993333;
+            }
+            54%,72%{
+                background-color: #d98c8c;
+            }
+            72%,90%{
+                background-color: #ecc6c6;
+            }
+            90%,100%{
+                background-color: white;
+            }
+        }
+
+        @keyframes changeColors2 {
+            0%,18%{
+                background-color: #cc0000;
+            }
+            18%,36%{
+                background-color: #990000;
+            }
+            36%,54%{
+                background-color: #993333;
+            }
+            54%,72%{
+                background-color: #d98c8c;
+            }
+            72%,90%{
+                background-color: #ecc6c6;
+            }
+            90%,100%{
+                background-color: white;
+            }
+        }
     </style>
 </head>
 <body>
@@ -51,6 +92,45 @@
 <script src="../assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 
+    /*============== Method 01 ==================*/
+
+    let id;
+
+    $("#start").click(function (){
+        clearInterval(id);
+        id = setInterval(playColors,170);
+    });
+
+    $("#stop").click(function (){
+        clearInterval(id);
+    });
+
+    let countToRight=0;
+
+    function playColors(){
+        if(countToRight<10){
+            switch (countToRight){
+                case 0: $("#sq01").css('animation','changeColors 1300ms'); break;
+                case 1: $("#sq02").css('animation','changeColors 1300ms'); break;
+                case 2: $("#sq03").css('animation','changeColors 1300ms'); break;
+                case 3: $("#sq04").css('animation','changeColors 1300ms'); break;
+                case 4: $("#sq05").css('animation','changeColors 1300ms'); break;
+
+                case 5: $("#sq05").css('animation','changeColors2 1300ms'); break;
+                case 6: $("#sq04").css('animation','changeColors2 1300ms'); break;
+                case 7: $("#sq03").css('animation','changeColors2 1300ms'); break;
+                case 8: $("#sq02").css('animation','changeColors2 1300ms'); break;
+                case 9: $("#sq01").css('animation','changeColors2 1300ms'); break;
+            }
+            countToRight++;
+        }else{
+            countToRight=0;
+        }
+    }
+
+    /*============== Method 02 ==================*/
+
+    /*
     let id;
 
     $("#start").click(function (){
@@ -62,8 +142,6 @@
     });
 
     let count=0;
-
-    let colorArray = ["#cc0000","#990000","#993333","#d98c8c","#ecc6c6"];
 
     function turnColorOn(event){
 
@@ -136,7 +214,8 @@
             count=-1;
         }
         count++;
-    }
+    }*/
+
 </script>
 </body>
 </html>

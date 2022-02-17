@@ -165,15 +165,16 @@
                         <p class="text-danger float-end txtReq" id="req-txtItemQty"></p>
                     </div>
 
-                    <div class="row mt-5">
+                    <button id="clearItemFields" type="button"> Clear </button>
+                    <div class="row mt-2">
                         <div class="col-3 float-start mt-2">
                             <input type="text" class="form-control" style="width: 10vw" id="txtSearchItem" aria-describedby="nameHelp" placeholder="Search Item">
                         </div>
                         <div class="col float-end mt-2">
-                            <button class="btn btn-danger float-end mb-2 me-2" type="button"> Delete Item </button>
-                            <button class="btn btn-success float-end mb-2 me-2" type="button"> Update Item </button>
-                            <button id="addNewItem" class="btn btn-dark float-end mb-2 me-2" type="button"> Add Item </button>
-                            <button id="btnSrchItem" class="btn btn-warning me-5 mb-2 me-2" type="button"> Search </button>
+                            <button class="btn btn-danger float-end mb-2 me-3" type="button"> Delete Item </button>
+                            <button class="btn btn-success float-end mb-2 me-3" type="button"> Update Item </button>
+                            <button id="addNewItem" class="btn btn-dark float-end mb-2 me-3" type="button"> Add Item </button>
+                            <button id="btnSrchItem" class="btn btn-warning ms-3 mb-2" type="button"> Search </button>
                         </div>
                     </div>
                 </form>
@@ -227,16 +228,18 @@
                         <p class="text-danger float-end txtReq" id="req-txtCusTel"></p>
                     </div>
 
-                    <div class="row mt-5">
+                    <button id="clearCusFields" type="button"> Clear </button>
+
+                    <div class="row mt-2">
                         <div class="col-3 float-start mt-2">
                             <input type="text" class="form-control" style="width: 10vw" id="txtSearchCustomer" aria-describedby="nameHelp" placeholder="Search Item">
                         </div>
 
                         <div class="col float-end mt-2">
-                            <button type="button" class="btn btn-danger float-end mb-2 me-2"> Delete Cust</button>
-                            <button type="button" class="btn btn-success float-end mb-2 me-2"> Update Cust </button>
-                            <button id="addNewCustomer" type="button" class="btn btn-dark float-end mb-2 me-2"> Add Cust</button>
-                            <button id="btnSrchCustomer" class="btn btn-warning me-5 mb-2 me-2" type="button"> Search </button>
+                            <button type="button" class="btn btn-danger float-end mb-2 me-3"> Delete Cust</button>
+                            <button type="button" class="btn btn-success float-end mb-2 me-3"> Update Cust </button>
+                            <button id="addNewCustomer" type="button" class="btn btn-dark float-end mb-2 me-3"> Add Cust</button>
+                            <button id="btnSrchCustomer" class="btn btn-warning ms-3 mb-2" type="button"> Search </button>
                         </div>
                     </div>
                 </form>
@@ -498,42 +501,6 @@
 
 <script>
 
-    /*-------------------------USING PURE JAVASCRIPT---------------------------*/
-    /*document.getElementById("register").addEventListener("click", function (){
-
-        document.getElementById("cont-02").style.display = 'inherit';
-        document.getElementById("cont-01").style.display = 'none';
-        document.getElementById("cont-03").style.display = 'none';
-        document.getElementById("cont-04").style.display = 'none';
-
-    });
-    document.getElementById("placeOrder").addEventListener("click", function (){
-
-        document.getElementById("cont-03").style.display = 'inherit';
-        document.getElementById("cont-01").style.display = 'none';
-        document.getElementById("cont-02").style.display = 'none';
-        document.getElementById("cont-04").style.display = 'none';
-
-    });
-    document.getElementById("orderHistory").addEventListener("click", function (){
-
-        document.getElementById("cont-04").style.display = 'inherit';
-        document.getElementById("cont-01").style.display = 'none';
-        document.getElementById("cont-03").style.display = 'none';
-        document.getElementById("cont-02").style.display = 'none';
-
-    });
-    document.getElementById("homePage").addEventListener("click", function (){
-
-        document.getElementById("cont-01").style.display = 'inherit';
-        document.getElementById("cont-02").style.display = 'none';
-        document.getElementById("cont-03").style.display = 'none';
-        document.getElementById("cont-04").style.display = 'none';
-
-    });*/
-
-
-
     /*-------------------------USING JQuery---------------------------*/
 
     $("#register").click(function (){
@@ -575,8 +542,6 @@
         const price = $("#txtUnitPrice").val();
         const qty = $("#txtQty").val();
 
-        console.log(id + " : " + name + " : " + price + " : " + qty);
-
         let itemArray = {
             itemID:id,
             itemName:name,
@@ -596,28 +561,27 @@
         }
 
         $("#item-body>tr").click(function (){
-            let cusID = $(this).children(":eq(0)").text();
-            let cusName = $(this).children(":eq(1)").text();
-            let cusAddress = $(this).children(":eq(2)").text();
-            let cusTP = $(this).children(":eq(3)").text();
-
-            console.log(cusID, cusName, cusAddress, cusTP);
-
-            $("#txtItemCode").val(cusID);
-            $("#txtItemName").val(cusName);
-            $("#txtUnitPrice").val(cusAddress);
-            $("#txtQty").val(cusTP);
+            loadItemsToTextFields(this);
         });
 
         $("#item-body>tr").dblclick(function (){
-           $(this).remove();
-
-            $("#txtItemCode").val(null);
-            $("#txtItemName").val(null);
-            $("#txtUnitPrice").val(null);
-            $("#txtQty").val(null);
-
+            removeTblItem();
         });
+    });
+
+    $("#item-body>tr").click(function (){
+        loadItemsToTextFields(this);
+    });
+
+    $("#btnSrchItem").click(function (){
+        searchItem();
+    });
+
+    $("#clearItemFields").click(function (){
+        $("#txtItemCode").val(null);
+        $("#txtItemName").val(null);
+        $("#txtUnitPrice").val(null);
+        $("#txtQty").val(null);
     });
 
     function addNewItemToTable(){
@@ -635,7 +599,30 @@
         }
     }
 
-    $("#btnSrchItem").click(function (){
+    function removeTblItem(){
+        $(this).remove();
+
+        $("#txtItemCode").val(null);
+        $("#txtItemName").val(null);
+        $("#txtUnitPrice").val(null);
+        $("#txtQty").val(null);
+    }
+
+    function loadItemsToTextFields(row){
+        let itemID = $(row).children(":eq(0)").text();
+        let itemName = $(row).children(":eq(1)").text();
+        let itemPrice = $(row).children(":eq(2)").text();
+        let itemQty = $(row).children(":eq(3)").text();
+
+        console.log(itemID, itemName, itemPrice, itemQty);
+
+        $("#txtItemCode").val(itemID);
+        $("#txtItemName").val(itemName);
+        $("#txtUnitPrice").val(itemPrice);
+        $("#txtQty").val(itemQty);
+    }
+
+    function searchItem(){
         let id = $("#txtSearchItem").val();
         if(id === ""){
             alert("Please insert a search-value");
@@ -660,88 +647,23 @@
                 alert("Nothing here lik this");
             }
         }
-    });
+    }
 
-    $("#item-body>tr").click(function (){
+    function updateItem(){
+        const id = $("#txtCustomerId").val();
+        const name = $("#txtCustomerName").val();
+        const email = $("#txtEmail").val();
+        const tele = $("#txtTelNo").val();
 
-        let itemID = $(this).children(":eq(0)").text();
-        let itemName = $(this).children(":eq(1)").text();
-        let itemPrice = $(this).children(":eq(2)").text();
-        let itemQty = $(this).children(":eq(3)").text();
+        if( ($("#req-txtCusId").text() === '') && (id !== "") && ($("#req-txtCusName").text() === '') && (name !== "")
+            && ($("#req-txtCusAddress").text() === '') && (email !== "") && ($("#req-txtCusTel").text() === '') && (tele !== "")){
 
-        console.log(itemID, itemName, itemPrice, itemQty);
 
-        $("#txtItemCode").val(itemID);
-        $("#txtItemName").val(itemName);
-        $("#txtUnitPrice").val(itemPrice);
-        $("#txtQty").val(itemQty);
 
-       /*   -- Method 02 --
-        console.log("clicked");
-        var row = $(this).closest("tr")[0];
-        console.log(row.cells[1].innerHTML);
-
-        $("#txtItemCode").val(row.cells[0].innerHTML);
-        $("#txtItemName").val(row.cells[1].innerHTML);
-        $("#txtUnitPrice").val(row.cells[2].innerHTML);
-        $("#txtQty").val(row.cells[3].innerHTML);
-        */
-    });
-
-    /*------USING PURE JAVASCRIPT ButtonAction-------*/
-   /* function isDisplay(d){
-        if(d==="register"){
-            document.getElementById("cont-02").style.display = 'inherit';
-            document.getElementById("cont-01").style.display = 'none';
-            document.getElementById("cont-03").style.display = 'none';
-            document.getElementById("cont-04").style.display = 'none';
-        }if(d==="placeOrder"){
-            document.getElementById("cont-03").style.display = 'inherit';
-            document.getElementById("cont-01").style.display = 'none';
-            document.getElementById("cont-02").style.display = 'none';
-            document.getElementById("cont-04").style.display = 'none';
-        }if(d==="orderHistory"){
-            document.getElementById("cont-04").style.display = 'inherit';
-            document.getElementById("cont-01").style.display = 'none';
-            document.getElementById("cont-03").style.display = 'none';
-            document.getElementById("cont-02").style.display = 'none';
-        }if(d==="homePage"){
-            document.getElementById("cont-01").style.display = 'inherit';
-            document.getElementById("cont-02").style.display = 'none';
-            document.getElementById("cont-03").style.display = 'none';
-            document.getElementById("cont-04").style.display = 'none';
+        }else{
+            alert("Please check all inputs in item form");
         }
-    }*/
-
-
-    /*------ add text field events *---- */
-    /*$("#txtItemCode").keydown(function (event){
-
-        if(event.key == "Enter"){
-            $("#txtItemName").focus();
-        }
-    });
-
-    $("#txtItemName").keydown(function (event){
-
-        if(event.key == "Enter"){
-            $("#txtUnitPrice").focus();
-        }
-    });
-
-    $("#txtUnitPrice").keydown(function (event){
-
-        if(event.key == "Enter"){
-            $("#txtQty").focus();
-        }
-    });
-
-    $("#txtQty").keydown(function (event){
-
-        if(event.key == "Enter"){
-            $("#addNewItem").focus();
-        }
-    });*/
+    }
 
     /*=======================================================*/
 
@@ -756,7 +678,7 @@
         if( ($("#req-txtCusId").text() === '') && (id !== "") && ($("#req-txtCusName").text() === '') && (name !== "")
             && ($("#req-txtCusAddress").text() === '') && (email !== "") && ($("#req-txtCusTel").text() === '') && (tele !== "")){
 
-            $("#customerTable").append(`<tr><td>${id}</td><td>${name}</td><td>${email}</td><td>${tele}</td></tr>`);
+                $("#customerTable").append(`<tr><td>${id}</td><td>${name}</td><td>${email}</td><td>${tele}</td></tr>`);
 
         }else{
             alert("Please check all inputs in item form");
@@ -777,16 +699,20 @@
         });
     });
 
+    $("#clearCusFields").click(function (){
+        $("#txtItemCode").val(null);
+        $("#txtItemName").val(null);
+        $("#txtUnitPrice").val(null);
+        $("#txtQty").val(null);
+    });
+
     /*------- TextField-regEx error and red-req Display -02 -------------*/
 
     function validate(regEx,textField,req){
 
         $(textField).keyup(function (){
-
             let word = $(textField).val();
-
             console.log("typed : "+word);
-
             let correct = regEx.test(word);
 
             if(correct){
@@ -809,79 +735,6 @@
             }
         });
     }
-
-    /*------- TextField-regEx error and red-req Display -01 -------------*/
-    /*$(".txtReq").css('display','none');
-
-    $("#txtItemCode").keyup(function (){
-
-        let word = $("#txtItemCode").val();
-
-        console.log("typed : "+word);
-
-        /!*let regEx = /^(C00-)[0-9]{3,4}$/!*!/
-
-        let regEx = /^[0-9]{3}$/
-        let correct = regEx.test(word);
-
-        if(correct){
-            console.log(" ? " + correct);
-            $("#txtItemCode").css('border','1px solid green');
-            $("#req-txtItemCode").css('display','none');
-        }else{
-            console.log(" ? " + correct);
-            $("#txtItemCode").css('border','1px solid red');
-            $("#req-txtItemCode").css('display','block');
-        }
-    });*/
-
-    // CRUD OPERATIONS START
-    /*function loadAllCustomers() {
-        $("#customerTable").empty();
-        for (var i of customerDB) {
-            /!*create a html row*!/
-            let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.address}</td><td>${i.salary}</td></tr>`;
-            /!*select the table body and append the row *!/
-            $("#customerTable").append(row);
-        }
-    }
-
-    function saveCustomer() {
-        //gather customer information
-        let customerID = $("#txtCusID").val();
-        let customerName = $("#txtCusName").val();
-        let customerAddress = $("#txtCusAddress").val();
-        let customerSalary = $("#txtCusSalary").val();
-
-        //create Object
-        var customerObject = {
-            id: customerID,
-            name: customerName,
-            address: customerAddress,
-            salary: customerSalary
-        };
-
-        customerDB.push(customerObject);
-    }
-
-    function searchCustomer(id) {
-        for (let i = 0; i < customerDB.length; i++) {
-            if (customerDB[i].id == id) {
-                return customerDB[i];
-            }
-        }
-    }
-
-    function deleteCustomer(){
-        //write the code
-    }
-
-    function updateCustomer(){
-        //write the code
-    }
-
-    // CRUD OPERATIONS ENDED
-*/
 
     /*--------------- Calling Functions -----------------*/
 
