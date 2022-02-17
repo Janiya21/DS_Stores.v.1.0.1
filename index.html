@@ -171,8 +171,8 @@
                             <input type="text" class="form-control" style="width: 10vw" id="txtSearchItem" aria-describedby="nameHelp" placeholder="Search Item">
                         </div>
                         <div class="col float-end mt-2">
-                            <button class="btn btn-danger float-end mb-2 me-3" type="button"> Delete Item </button>
-                            <button class="btn btn-success float-end mb-2 me-3" type="button"> Update Item </button>
+                            <button id="dltItem" class="btn btn-danger float-end mb-2 me-3" type="button"> Delete Item </button>
+                            <button class="btn btn-success float-end mb-2 me-3" id="updateItem" type="button"> Update Item </button>
                             <button id="addNewItem" class="btn btn-dark float-end mb-2 me-3" type="button"> Add Item </button>
                             <button id="btnSrchItem" class="btn btn-warning ms-3 mb-2" type="button"> Search </button>
                         </div>
@@ -537,35 +537,14 @@
 
         $("#item-body>tr").off();
 
-        const id = $("#txtItemCode").val();
-        const name = $("#txtItemName").val();
-        const price = $("#txtUnitPrice").val();
-        const qty = $("#txtQty").val();
-
-        let itemArray = {
-            itemID:id,
-            itemName:name,
-            itemPrice:price,
-            itemQty:qty
-        };
-
-        items.push(itemArray);
-
-        if( ($("#req-txtItemCode").text() === '') && (id !== "") && ($("#req-txtItemName").text() === '') && (name !=="")
-            && ($("#req-txtItemPrice").text() === '') && (price !=="") && ($("#req-txtItemQty").text() === '') && (qty !=="")){
-
-                addNewItemToTable();
-
-        }else{
-            alert("Please check all inputs in item form");
-        }
+        addNewItemToTable();
 
         $("#item-body>tr").click(function (){
             loadItemsToTextFields(this);
         });
 
         $("#item-body>tr").dblclick(function (){
-            removeTblItem();
+            removeTblItem(this);
         });
     });
 
@@ -584,28 +563,60 @@
         $("#txtQty").val(null);
     });
 
-    function addNewItemToTable(){
-        let i = items.length -1;
+    $("#updateItem").click(function (){
+        updateItem();
+    });
 
-        let row = `<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}</td><td>${items[i].itemQty}</td></tr>`;
-        $("#itemTable").append(row);
+    /*$("#dltItem").click(function (){
+        removeTblItem(this);
+    });*/
+
+    function addNewItemToTable(){
+
+        const id = $("#txtItemCode").val();
+        const name = $("#txtItemName").val();
+        const price = $("#txtUnitPrice").val();
+        const qty = $("#txtQty").val();
+
+        let itemArray = {
+            itemID:id,
+            itemName:name,
+            itemPrice:price,
+            itemQty:qty
+        };
+
+        items.push(itemArray);
+
+        if( ($("#req-txtItemCode").text() === '') && (id !== "") && ($("#req-txtItemName").text() === '') && (name !=="")
+            && ($("#req-txtItemPrice").text() === '') && (price !=="") && ($("#req-txtItemQty").text() === '') && (qty !=="")){
+
+            let i = items.length -1;
+
+            let row = `<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}</td><td>${items[i].itemQty}</td></tr>`;
+            $("#itemTable").append(row);
+
+        }else{
+            alert("Please check all inputs in item form");
+        }
     }
 
+    Array.prototype.insert = function ( index, item ) {
+        this.splice( index, 0, item );
+    };
+
     function loadAllItemsToTable(){
-        $("#itemTable").empty();
+        $("#item-body").empty();
         for(const i in items) {
             let row = `<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}</td><td>${items[i].itemQty}</td></tr>`;
             $("#itemTable").append(row);
         }
     }
 
-    function removeTblItem(){
-        $(this).remove();
-
-        $("#txtItemCode").val(null);
-        $("#txtItemName").val(null);
-        $("#txtUnitPrice").val(null);
-        $("#txtQty").val(null);
+    function removeTblItem(row){
+        if($("#txtItemCode").val() !== ""){
+            $(row).remove();
+            deleteItem();
+        }
     }
 
     function loadItemsToTextFields(row){
@@ -620,6 +631,7 @@
         $("#txtItemName").val(itemName);
         $("#txtUnitPrice").val(itemPrice);
         $("#txtQty").val(itemQty);
+
     }
 
     function searchItem(){
@@ -649,20 +661,61 @@
         }
     }
 
-    function updateItem(){
-        const id = $("#txtCustomerId").val();
-        const name = $("#txtCustomerName").val();
-        const email = $("#txtEmail").val();
-        const tele = $("#txtTelNo").val();
-
-        if( ($("#req-txtCusId").text() === '') && (id !== "") && ($("#req-txtCusName").text() === '') && (name !== "")
-            && ($("#req-txtCusAddress").text() === '') && (email !== "") && ($("#req-txtCusTel").text() === '') && (tele !== "")){
-
-
-
-        }else{
-            alert("Please check all inputs in item form");
+    function deleteItem(){
+        let id = $("#txtItemCode").val();
+        let index=0;
+        for (let i = 0; i < items.length; i++) {
+            if(items[i].itemID === id){
+                index =  i;
+            }
         }
+
+        items.splice(index,1);
+
+        $("#txtItemCode").val(null);
+        $("#txtItemName").val(null);
+        $("#txtUnitPrice").val(null);
+        $("#txtQty").val(null);
+    }
+
+    function updateItem(){
+        /*let id = $("#txtItemCode").val();
+        let index=0;
+        for (let i = 0; i < items.length; i++) {
+            if(items[i].itemID === id){
+                index =  i;
+            }
+        }
+        console.log(index + " index");
+
+        items.splice(index,1);
+        console.log(items);
+
+        addNewItemToTable("Update",index);
+
+        loadAllItemsToTable();*/
+
+        const id = $("#txtItemCode").val();
+        const name = $("#txtItemName").val();
+        const price = $("#txtUnitPrice").val();
+        const qty = $("#txtQty").val();
+
+        let itemArray = {
+            itemID:id,
+            itemName:name,
+            itemPrice:price,
+            itemQty:qty
+        };
+
+        let index=0;
+        for (let i = 0; i < items.length; i++) {
+            if(items[i].itemID === id){
+                index =  i;
+            }
+        }
+
+        items[index] = itemArray;
+        loadAllItemsToTable();
     }
 
     /*=======================================================*/
