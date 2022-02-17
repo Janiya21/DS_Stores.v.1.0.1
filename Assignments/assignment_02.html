@@ -97,12 +97,14 @@
     let id;
 
     $("#start").click(function (){
+
         clearInterval(id);
         id = setInterval(playColors,170);
     });
 
     $("#stop").click(function (){
         clearInterval(id);
+
     });
 
     let countToRight=0;

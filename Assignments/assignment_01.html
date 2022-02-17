@@ -71,31 +71,27 @@
 <script src="../assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 
-    let colors;
+    let colors2 = ["blue", "pink", "green", "orange", "red", "purple"];
 
     setInterval(changeColors,200);
 
-    let count=0;
-
     function changeColors(){
 
-        switch (count){
-            case 0: colors = ["blue", "pink", "green", "orange", "red", "purple"]; break;
-            case 1: colors = ["pink", "green", "orange", "red", "purple", "blue"]; break;
-            case 2: colors = ["green", "orange", "red", "purple", "blue", "pink"]; break;
-            case 3: colors = ["orange", "red", "purple", "blue", "pink", "green"]; break;
-            case 4: colors = ["red", "purple", "blue", "pink", "green", "orange"]; break;
-            case 5: colors = ["purple", "blue", "pink", "green", "orange", "red"]; break;
-            case 6: count = -1; break;
-        }
-        count++;
+        $("#sq01").css('background-color',colors2[5]);
+        $("#sq02").css('background-color',colors2[4]);
+        $("#sq03").css('background-color',colors2[3]);
+        $("#sq04").css('background-color',colors2[2]);
+        $("#sq05").css('background-color',colors2[1]);
+        $("#sq06").css('background-color',colors2[0]);
+    }
 
-        $("#sq01").css('background-color',colors[5]);
-        $("#sq02").css('background-color',colors[4]);
-        $("#sq03").css('background-color',colors[3]);
-        $("#sq04").css('background-color',colors[2]);
-        $("#sq05").css('background-color',colors[1]);
-        $("#sq06").css('background-color',colors[0]);
+    setInterval(createArray,200);
+
+    function createArray(){
+        let first = colors2[0];
+        colors2.shift();
+        colors2.push(first);
+        return colors2;
     }
 
 </script>
