@@ -10,17 +10,10 @@ function afterManipulateDOM(){
     });
 }
 
-$("#clearCusFields").click(function (){
-    $("#txtItemCode").val(null);
-    $("#txtItemName").val(null);
-    $("#txtUnitPrice").val(null);
-    $("#txtQty").val(null);
-});
-
 function addNewCustomerToTable(){
 
     const code = $("#txtCustomerId").val();
-    const customerName = $("#txtCustomerNamee").val();
+    const customerName = $("#txtCustomerName").val();
     const email = $("#txtEmail").val();
     const tel = $("#txtTelNo").val();
 
@@ -54,14 +47,56 @@ function loadAllCustomersToTable(){
     }
 }
 
-function removeTblCustomer(row){
+function removeTblCustomers(row){
     if($("#txtCustomerId").val() !== ""){
         $(row).remove();
         deleteCustomer();
     }
 }
 
+function loadCustomersToTextFields(row){
+    let cusID = $(row).children(":eq(0)").text();
+    let cusName = $(row).children(":eq(1)").text();
+    let email = $(row).children(":eq(2)").text();
+    let telNo = $(row).children(":eq(3)").text();
+
+    console.log(cusID, cusName, email, telNo);
+
+    $("#txtCustomerId").val(cusID);
+    $("#txtCustomerName").val(cusName);
+    $("#txtEmail").val(email);
+    $("#txtTelNo").val(telNo);
+}
+
+function searchCustomer(){
+    let id = $("#txtSearchCustomer").val();
+    if(id === ""){
+        alert("Please insert a search-value");
+    }else{
+        let value = null;
+        value = customers.find(function (e){
+            if(e.customerCode === id){
+                return e;
+            }
+        });
+
+        if(value != null){
+            $("#txtCustomerId").val(value.customerCode);
+            $("#txtCustomerName").val(value.customerName);
+            $("#txtEmail").val(value.email);
+            $("#txtTelNo").val(value.telNo);
+        }else{
+            $("#txtCustomerId").val(null);
+            $("#txtCustomerName").val(null);
+            $("#txtEmail").val(null);
+            $("#txtTelNo").val(null);
+            alert("Nothing here like this");
+        }
+    }
+}
+
 function deleteCustomer(){
+
     let id = $("#txtCustomerId").val();
     let index=0;
     for (let i = 0; i < customers.length; i++) {
@@ -70,7 +105,7 @@ function deleteCustomer(){
         }
     }
 
-    items.splice(index,1);
+    customers.splice(index,1);
 
     $("#txtCustomerId").val(null);
     $("#txtCustomerName").val(null);
@@ -81,7 +116,7 @@ function deleteCustomer(){
 function updateCustomer(){
 
     const code = $("#txtCustomerId").val();
-    const customerName = $("#txtCustomerNamee").val();
+    const customerName = $("#txtCustomerName").val();
     const email = $("#txtEmail").val();
     const tel = $("#txtTelNo").val();
 
@@ -102,3 +137,78 @@ function updateCustomer(){
     customers[index] = customerArray;
     loadAllCustomersToTable();
 }
+
+$("#clearCusFields").click(function (){
+    $("#txtCustomerId").val(null);
+    $("#txtCustomerName").val(null);
+    $("#txtEmail").val(null);
+    $("#txtTelNo").val(null);
+});
+
+function validate(regEx,textField,req){
+
+    $(textField).keyup(function (){
+        let word = $(textField).val();
+        console.log("typed : "+word);
+        let correct = regEx.test(word);
+
+        if(correct){
+            $(textField).css('border','1px solid green');
+            $(req).text("");
+
+        }else{
+            $(textField).css('border','1px solid red');
+            $(req).text("valid input required");
+        }
+    });
+}
+
+function navigateToNext(from,to,req){
+    $(from).keyup(function (event){
+        if(event.key == "Enter"){
+            if($(req).text() === '') {
+                $(to).focus();
+            }
+        }
+    });
+}
+
+$("#addNewCustomer").click(function (){
+
+    addNewCustomerToTable();
+
+    afterManipulateDOM();
+});
+
+$("#customer-body>tr").click(function (){
+    loadCustomersToTextFields(this);
+});
+
+$("#btnSrchCustomer").click(function (){
+    searchCustomer();
+});
+
+$("#clearCusFields").click(function (){
+    $("#txtCustomerId").val(null);
+    $("#txtCustomerName").val(null);
+    $("#txtEmail").val(null);
+    $("#txtTelNo").val(null);
+
+    afterManipulateDOM();
+});
+
+$("#updateCustomer").click(function (){
+    updateCustomer();
+
+    afterManipulateDOM();
+});
+
+validate(/^(C00-)[0-9]{3,4}$/,"#txtCustomerId","#req-txtCusId");
+validate(/^[a-zA-Z]{2,15}$/,"#txtCustomerName","#req-txtCusName");
+validate(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,"#txtEmail","#req-txtCusAddress");
+validate(/^[0-9]{10}$/,"#txtTelNo","#req-txtCusTel");
+
+navigateToNext("#txtCustomerId","#txtCustomerName","#req-txtCusId");
+navigateToNext("#txtCustomerName","#txtEmail","#req-txtCusName");
+navigateToNext("#txtEmail","#txtTelNo","#req-txtCusAddress");
+navigateToNext("#txtTelNo","#addNewCustomer","#req-txtCusTel");

@@ -237,7 +237,7 @@
 
                         <div class="col float-end mt-2">
                             <button type="button" class="btn btn-danger float-end mb-2 me-3"> Delete Cust</button>
-                            <button type="button" class="btn btn-success float-end mb-2 me-3"> Update Cust </button>
+                            <button type="button" id="updateCustomer" class="btn btn-success float-end mb-2 me-3"> Update Cust </button>
                             <button id="addNewCustomer" type="button" class="btn btn-dark float-end mb-2 me-3"> Add Cust</button>
                             <button id="btnSrchCustomer" class="btn btn-warning ms-3 mb-2" type="button"> Search </button>
                         </div>
@@ -499,12 +499,11 @@
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script src="db/DB.js"></script>
 <script src="model/ItemDTO.js"></script>
+<script src="model/CustomerDTO.js"></script>
 <script src="controller/ItemController.js"></script>
+<script src="controller/CustomerController.js"></script>
 
 <script>
-
-    /*-------------------------USING JQuery---------------------------*/
-
     $("#register").click(function (){
         $("#cont-02").css("display","block");
         $("#cont-01").css("display","none");
@@ -532,87 +531,6 @@
         $("#cont-03").css("display","none");
         $("#cont-04").css("display","none");
     });
-
-
-    $("#addNewCustomer").click(function (){
-        const id = $("#txtCustomerId").val();
-        const name = $("#txtCustomerName").val();
-        const email = $("#txtEmail").val();
-        const tele = $("#txtTelNo").val();
-
-        console.log(id + " : " + name + " : " + email + " : " + tele);
-
-        if( ($("#req-txtCusId").text() === '') && (id !== "") && ($("#req-txtCusName").text() === '') && (name !== "")
-            && ($("#req-txtCusAddress").text() === '') && (email !== "") && ($("#req-txtCusTel").text() === '') && (tele !== "")){
-
-                $("#customerTable").append(`<tr><td>${id}</td><td>${name}</td><td>${email}</td><td>${tele}</td></tr>`);
-
-        }else{
-            alert("Please check all inputs in item form");
-        }
-
-        $("#customer-body>tr").click(function (){
-            let cusID = $(this).children(":eq(0)").text();
-            let cusName = $(this).children(":eq(1)").text();
-            let cusAddress = $(this).children(":eq(2)").text();
-            let cusTP = $(this).children(":eq(3)").text();
-
-            console.log(cusID, cusName, cusAddress, cusTP);
-
-            $("#txtCustomerId").val(cusID);
-            $("#txtCustomerName").val(cusName);
-            $("#txtEmail").val(cusAddress);
-            $("#txtTelNo").val(cusTP);
-        });
-    });
-
-    $("#clearCusFields").click(function (){
-        $("#txtItemCode").val(null);
-        $("#txtItemName").val(null);
-        $("#txtUnitPrice").val(null);
-        $("#txtQty").val(null);
-    });
-
-    /*------- TextField-regEx error and red-req Display -02 -------------*/
-
-    function validate(regEx,textField,req){
-
-        $(textField).keyup(function (){
-            let word = $(textField).val();
-            console.log("typed : "+word);
-            let correct = regEx.test(word);
-
-            if(correct){
-                $(textField).css('border','1px solid green');
-                $(req).text("");
-
-            }else{
-                $(textField).css('border','1px solid red');
-                $(req).text("valid input required");
-            }
-        });
-    }
-
-    function navigateToNext(from,to,req){
-        $(from).keyup(function (event){
-            if(event.key == "Enter"){
-                if($(req).text() === '') {
-                    $(to).focus();
-                }
-            }
-        });
-    }
-
-    validate(/^(C00-)[0-9]{3,4}$/,"#txtCustomerId","#req-txtCusId");
-    validate(/^[a-zA-Z]{2,15}$/,"#txtCustomerName","#req-txtCusName");
-    validate(/^[a-zA-Z]{5,15}$/,"#txtEmail","#req-txtCusAddress");
-    validate(/^[0-9]{10}$/,"#txtTelNo","#req-txtCusTel");
-
-    navigateToNext("#txtCustomerId","#txtCustomerName","#req-txtItemCode");
-    navigateToNext("#txtCustomerName","#txtEmail","#req-txtItemCode");
-    navigateToNext("#txtEmail","#txtTelNo","#req-txtItemCode");
-    navigateToNext("#txtTelNo","#addNewCustomer","#req-txtItemCode");
-
 
 </script>
 
