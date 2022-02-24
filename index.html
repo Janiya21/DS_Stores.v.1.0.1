@@ -275,45 +275,57 @@
             <div class="row">
                 <form>
                     <div class="form-group mt-4">
-                        <select class="custom-select" required>
-                            <option value="">Select Customer Id</option>
+                        <select class="custom-select" id="customerID-selector" required>
+                            <!--<option value="">Select Customer Id</option>
                             <option value="1">C-001</option>
                             <option value="2">C-002</option>
-                            <option value="3">C-003</option>
+                            <option value="3">C-003</option>-->
                         </select>
                         <div class="invalid-feedback">Example invalid custom select feedback</div>
                     </div>
 
                     <div class="mb-3 mt-3">
-                        <input type="text" class="form-control" id="customId" aria-describedby="telHelp" placeholder="Customer Name">
+                        <input type="text" class="form-control" id="customName" aria-describedby="telHelp" placeholder="Customer Name">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <input type="text" class="form-control" id="customAddress" aria-describedby="telHelp" placeholder="Email Address">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <input type="text" class="form-control" id="customTelNo" aria-describedby="telHelp" placeholder="Telephone">
                     </div>
 
                     <hr>
 
                     <div class="form-group mt-4">
-                        <select class="custom-select" required>
-                            <option value="">Select Item Id</option>
+                        <select class="custom-select" id="itemID-selector" required>
+                            <!--<option value="">Select Item Id</option>
                             <option value="1">I-001</option>
                             <option value="2">I-002</option>
-                            <option value="3">I-003</option>
+                            <option value="3">I-003</option>-->
                         </select>
                         <div class="invalid-feedback">Example invalid custom select feedback</div>
                     </div>
 
                     <div class="mb-3 mt-3">
-                        <input type="text" class="form-control" id="itemId" aria-describedby="telHelp" placeholder="Item Name">
+                        <input type="text" class="form-control" id="itemName" aria-describedby="telHelp" placeholder="Item Name">
                     </div>
                     <div class="mb-3 mt-3">
-                        <input type="text" class="form-control" id="unitPrice2" aria-describedby="telHelp" placeholder="Unit Price">
+                        <input type="text" class="form-control" id="unitPrice" aria-describedby="telHelp" placeholder="Unit Price">
                     </div>
-                    <div class="mb-3 mt-3">
-                        <input type="text" class="form-control" id="itemQty" aria-describedby="telHelp" placeholder="Available qty">
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <input type="text" class="form-control" id="orderQty" aria-describedby="telHelp" placeholder="Order Qty">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-2 mt-1">
+                                <input type="text" class="form-control" id="itemQty" aria-describedby="telHelp" placeholder="Available qty">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-2 mt-1">
+                                <input type="text" class="form-control" id="orderQty" aria-describedby="telHelp" placeholder="Order Qty">
+                            </div>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success float-end mb-3"> Add To Cart </button>
+                    <button type="button" id="addToCart" class="btn btn-success float-end mb-3"> Add To Cart </button>
                 </form>
 
             </div>
@@ -378,12 +390,12 @@
                         <input type="text" class="form-control text-white" id="itemCode" aria-describedby="nameHelp" placeholder="Total">
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="itemName" aria-describedby="nameHelp" placeholder="Discount">
+                        <input type="text" class="form-control" id="discount" aria-describedby="nameHelp" placeholder="Discount">
                     </div>
                     <div class="mb-3">
                         <input type="text" class="form-control" id="totBil" aria-describedby="nameHelp" placeholder="Total Bill">
                     </div>
-                    <button type="submit" class="btn btn-dark float-end mt-4"> Create Bill </button>
+                    <button type="submit" class="btn btn-dark float-end mb-2"> Create Bill </button>
                 </form>
             </div>
         </div>
@@ -502,6 +514,7 @@
 <script src="model/CustomerDTO.js"></script>
 <script src="controller/ItemController.js"></script>
 <script src="controller/CustomerController.js"></script>
+<script src="controller/OrderController.js"></script>
 
 <script>
     $("#register").click(function (){

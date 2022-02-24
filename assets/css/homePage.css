@@ -97,6 +97,7 @@ body{
 #cont-03 .form-control{
     background-color: rgba(61, 61, 61, 0.4) !important;
     border:2px solid #b3b3b3 !important;
+    color: white !important;
 }
 
 #cont-03 .three {
