@@ -325,7 +325,7 @@
                         </div>
                     </div>
 
-                    <button type="button" id="addToCart" class="btn btn-success float-end mb-3"> Add To Cart </button>
+                    <button type="button" id="btnAddToCart" class="btn btn-success float-end mb-3"> Add To Cart </button>
                 </form>
 
             </div>
@@ -340,7 +340,7 @@
 
             <div class="row two mb-3">
                 <section class="shadow-lg table-wrap2">
-                    <table class="table table-bordered table-hover mt-3 text-white" style="height: 200px">
+                    <table id="orderTable" class="table table-bordered table-hover mt-3 text-white">
                         <thead class="bg-dark">
                         <tr>
                             <th>Item Id</th>
@@ -350,35 +350,7 @@
                             <th class="w-25">Total</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>I-001</td>
-                            <td>Samba Rice</td>
-                            <td>2</td>
-                            <td>130.00</td>
-                            <td>260.00</td>
-                        </tr>
-                        <tr>
-                            <td>I-001</td>
-                            <td>Samba Rice</td>
-                            <td>2</td>
-                            <td>130.00</td>
-                            <td>260.00</td>
-                        </tr>
-                        <tr>
-                            <td>I-001</td>
-                            <td>Samba Rice</td>
-                            <td>2</td>
-                            <td>130.00</td>
-                            <td>260.00</td>
-                        </tr>
-                        <tr>
-                            <td>I-001</td>
-                            <td>Samba Rice</td>
-                            <td>2</td>
-                            <td>130.00</td>
-                            <td>260.00</td>
-                        </tr>
+                        <tbody class="order-body">
                         </tbody>
                     </table>
                 </section>
@@ -387,15 +359,15 @@
             <div class="row three">
                 <form action="">
                     <div class="mb-3">
-                        <input type="text" class="form-control text-white" id="itemCode" aria-describedby="nameHelp" placeholder="Total">
+                        <input type="text" class="form-control text-white" id="txtPureTot" aria-describedby="nameHelp" placeholder="Total">
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="discount" aria-describedby="nameHelp" placeholder="Discount">
+                        <input type="text" class="form-control" id="txtDiscount" aria-describedby="nameHelp" placeholder="Discount %">
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="totBil" aria-describedby="nameHelp" placeholder="Total Bill">
+                        <input type="text" class="form-control" id="txtTotBil" aria-describedby="nameHelp" placeholder="Total Bill">
                     </div>
-                    <button type="submit" class="btn btn-dark float-end mb-2"> Create Bill </button>
+                    <button type="button" id="btnCreateBill" class="btn btn-dark float-end mb-2"> Create Bill </button>
                 </form>
             </div>
         </div>
