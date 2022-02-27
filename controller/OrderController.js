@@ -64,17 +64,26 @@ function calculateTot(){
 }
 
 function loadToOrderDetail(){
-    for (const i in orders) {
-        orderDetails[i + (orderDetails.length-1)] = orders[i];
+    for (let i = 0; i < orders.length; i++) {
+        orderDetails[orderDetails.length] = orders[i];
     }
 }
 
-function createBill(){
+function setTotal(){
     let pureTot = $("#txtPureTot").val();
     let discount = $("#txtDiscount").val();
 
     let totBil = pureTot - (pureTot * discount)/100;
+    console.log(totBil + " rs");
     $("#txtTotBil").val(totBil + " /=");
+}
+
+function createBill(){
+   /* let pureTot = $("#txtPureTot").val();
+    let discount = $("#txtDiscount").val();
+
+    let totBil = pureTot - (pureTot * discount)/100;
+    $("#txtTotBil").val(totBil + " /=");*/
 
     loadToOrderDetail();
 
@@ -84,6 +93,7 @@ function createBill(){
         $("#itemName").val(null);
         $("#unitPrice").val(null);
         $("#orderQty").val(null);
+        $("#itemQty").val(null);
         $("#customName").val(null);
         $("#customAddress").val(null);
         $("#customTelNo").val(null);
@@ -136,4 +146,8 @@ $("#btnAddToCart").click(function (){
 
 $("#btnCreateBill").click(function (){
     createBill();
+});
+
+$("#txtDiscount").keyup(function(){
+    setTotal();
 });
