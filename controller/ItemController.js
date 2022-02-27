@@ -1,7 +1,9 @@
-function afterManipulateDOM(){
+function afterManipulateItemDOM(){
+    console.log("clicked bich");
     $("#item-body>tr").off();
 
     $("#item-body>tr").click(function (){
+        console.log("clicked");
         loadItemsToTextFields(this);
     });
 
@@ -170,7 +172,8 @@ $("#addNewItem").click(function (){
 
     addNewItemToTable();
 
-    afterManipulateDOM();
+    console.log("hlo pakk");
+    afterManipulateItemDOM();
 });
 
 $("#item-body>tr").click(function (){
@@ -187,13 +190,13 @@ $("#clearItemFields").click(function (){
     $("#txtUnitPrice").val(null);
     $("#txtQty").val(null);
 
-    afterManipulateDOM();
+    afterManipulateItemDOM();
 });
 
 $("#updateItem").click(function (){
     updateItem();
 
-    afterManipulateDOM();
+    afterManipulateItemDOM();
 });
 
 validate(/^(I00-)[0-9]{3,4}$/,"#txtItemCode","#req-txtItemCode");

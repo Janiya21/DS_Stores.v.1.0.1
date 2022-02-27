@@ -1,7 +1,9 @@
-function afterManipulateDOM(){
+function afterManipulateCustomerDOM(){
+    console.log("shit");
     $("#customer-body>tr").off();
 
     $("#customer-body>tr").click(function (){
+        console.log("fak");
         loadCustomersToTextFields(this);
     });
 
@@ -177,7 +179,7 @@ $("#addNewCustomer").click(function (){
 
     addNewCustomerToTable();
 
-    afterManipulateDOM();
+    afterManipulateCustomerDOM();
 });
 
 $("#customer-body>tr").click(function (){
@@ -194,13 +196,13 @@ $("#clearCusFields").click(function (){
     $("#txtEmail").val(null);
     $("#txtTelNo").val(null);
 
-    afterManipulateDOM();
+    afterManipulateCustomerDOM();
 });
 
 $("#updateCustomer").click(function (){
     updateCustomer();
 
-    afterManipulateDOM();
+    afterManipulateCustomerDOM();
 });
 
 /*validate(/^(C00-)[0-9]{3,4}$/,"#txtCustomerId","#req-txtCusId");
