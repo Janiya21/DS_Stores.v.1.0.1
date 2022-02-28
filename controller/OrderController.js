@@ -52,7 +52,27 @@ function addOrderToTable(){
 }
 
 function generateOrderID(){
-    return "D00-001";
+    if(orderDetails.length === 0){
+        return "D00-001";
+    }else{
+        let getId = orderDetails[orderDetails.length-1].orderID;
+        let number = Number(getId.substr(4,7));
+        let nextNum = number + 1;
+
+        let nextId;
+
+        if(nextNum<10){
+            nextId = "D00-00"+nextNum;
+        }else if(nextNum<100){
+            nextId = "D00-0"+nextNum;
+        }else{
+            nextId = "D00-100";
+        }
+
+
+        console.log(nextId + " Id");
+        return nextId;
+    }
 }
 
 function calculateTot(){
@@ -69,6 +89,22 @@ function loadToOrderDetail(){
     }
 }
 
+function loadToOrderHistory(){
+    console.log("fuckkk");
+    let historyArray = {
+        orderId: orderDetails[orderDetails.length-1].orderID,
+        customerID: orderDetails[orderDetails.length-1].customerID,
+        date:"2022.02.28",
+        time:"14.20",
+        totalAmount: "1200"
+    }
+
+    orderHistory.push(historyArray);
+
+    console.log(historyArray);
+    console.log("fuckkk");
+}
+
 function setTotal(){
     let pureTot = $("#txtPureTot").val();
     let discount = $("#txtDiscount").val();
@@ -79,13 +115,9 @@ function setTotal(){
 }
 
 function createBill(){
-   /* let pureTot = $("#txtPureTot").val();
-    let discount = $("#txtDiscount").val();
-
-    let totBil = pureTot - (pureTot * discount)/100;
-    $("#txtTotBil").val(totBil + " /=");*/
 
     loadToOrderDetail();
+    loadToOrderHistory();
 
     let isExecuted = confirm("Are you sure to confirm this order?");
     if(isExecuted){
@@ -113,6 +145,9 @@ $("#placeOrder").click(function (){
 
 $("#customerID-selector").click(function (){
     var customerID = $("#customerID-selector").val();
+
+    console.log(customerID + " this is ID");
+
     let customer;
     for (const i in customers) {
         if(customers[i].customerCode === customerID){

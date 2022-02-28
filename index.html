@@ -276,10 +276,10 @@
                 <form>
                     <div class="form-group mt-4">
                         <select class="custom-select" id="customerID-selector" required>
-                            <!--<option value="">Select Customer Id</option>
+                            <option value="">Select Customer Id</option>
                             <option value="1">C-001</option>
                             <option value="2">C-002</option>
-                            <option value="3">C-003</option>-->
+                            <option value="3">C-003</option>
                         </select>
                         <div class="invalid-feedback">Example invalid custom select feedback</div>
                     </div>
@@ -298,10 +298,10 @@
 
                     <div class="form-group mt-4">
                         <select class="custom-select" id="itemID-selector" required>
-                            <!--<option value="">Select Item Id</option>
+                            <option value="">Select Item Id</option>
                             <option value="1">I-001</option>
                             <option value="2">I-002</option>
-                            <option value="3">I-003</option>-->
+                            <option value="3">I-003</option>
                         </select>
                         <div class="invalid-feedback">Example invalid custom select feedback</div>
                     </div>
@@ -390,85 +390,42 @@
                     </div>
                 </form>
 
+                <div class="col">
+                    <section class="shadow-lg table-wrap">
+                        <table class="table table-bordered table-hover mt-3 text-white" id="tblOrderDetail">
+                            <thead class="bg-dark text-white">
+                            <tr>
+                                <th>Order Id</th>
+                                <th>Customer Id</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Total Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody  id="tblOrderDetail-body">
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
 
-                <section class="shadow-lg table-wrap">
-                    <table class="table table-bordered table-hover mt-3 text-white"  style="height: 70vh">
-                        <thead class="bg-dark text-white">
-                        <tr>
-                            <th>Order Id</th>
-                            <th>Customer Id</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Total Amount</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                <div class="col">
+                    <section class="shadow-lg table-wrap">
+                        <table class="table table-bordered table-hover mt-3 text-white" id="tblItemDetail">
+                            <thead class="bg-dark text-white">
                             <tr>
-                                <td>O-001</td>
-                                <td>C-002</td>
-                                <td>2021-10-09</td>
-                                <td>17.32</td>
-                                <td>1800.00</td>
+                                <th>Item Code</th>
+                                <th>Name</th>
+                                <th>Qty</th>
+                                <th>Unit Price</th>
+                                <th>Discount</th>
+                                <th>Total Amount</th>
                             </tr>
-                            <tr>
-                                <td>O-001</td>
-                                <td>C-002</td>
-                                <td>2021-10-09</td>
-                                <td>17.32</td>
-                                <td>1800.00</td>
-                            </tr>
-                            <tr>
-                                <td>O-001</td>
-                                <td>C-002</td>
-                                <td>2021-10-09</td>
-                                <td>17.32</td>
-                                <td>1800.00</td>
-                            </tr>
-                            <tr>
-                                <td>O-001</td>
-                                <td>C-002</td>
-                                <td>2021-10-09</td>
-                                <td>17.32</td>
-                                <td>1800.00</td>
-                            </tr>
-                            <tr>
-                                <td>O-001</td>
-                                <td>C-002</td>
-                                <td>2021-10-09</td>
-                                <td>17.32</td>
-                                <td>1800.00</td>
-                            </tr>
-                            <tr>
-                                <td>O-001</td>
-                                <td>C-002</td>
-                                <td>2021-10-09</td>
-                                <td>17.32</td>
-                                <td>1800.00</td>
-                            </tr>
-                            <tr>
-                                <td>O-001</td>
-                                <td>C-002</td>
-                                <td>2021-10-09</td>
-                                <td>17.32</td>
-                                <td>1800.00</td>
-                            </tr>
-                            <tr>
-                                <td>O-001</td>
-                                <td>C-002</td>
-                                <td>2021-10-09</td>
-                                <td>17.32</td>
-                                <td>1800.00</td>
-                            </tr>
-                            <tr>
-                                <td>O-001</td>
-                                <td>C-002</td>
-                                <td>2021-10-09</td>
-                                <td>17.32</td>
-                                <td>1800.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
             </div>
 
             <!--<div class="row-cols-1">
@@ -487,6 +444,7 @@
 <script src="controller/ItemController.js"></script>
 <script src="controller/CustomerController.js"></script>
 <script src="controller/OrderController.js"></script>
+<script src="controller/OrderDetailController.js"></script>
 
 <script>
     $("#register").click(function (){
