@@ -11,5 +11,23 @@ $("#orderHistory").click(function (){
     console.log("fq");
     loadAllOrderHistoryToTable();
 
-    $("")
+    $("#tblOrderDetail-body > tr").click(function (){
+
+        $("#tblItemDetail-body").empty();
+        let oId = $(this).children(":eq(0)").text();
+
+        console.log(oId + " oId");
+
+        for (let i=0; i< orderDetails.length; i++) {
+            console.log(i + " i");
+
+            if(orderDetails[i].orderID === oId){
+
+                console.log( orderDetails[i].orderID + "  /  " + oId);
+
+                let row = `<tr><td>${orderDetails[i].itemID}</td><td>${orderDetails[i].itemName}</td><td>${orderDetails[i].units}</td><td>${orderDetails[i].unitPrice}</td><td>${orderDetails[i].total}</td></tr>`;
+                $("#tblItemDetail").append(row);
+            }
+        }
+    });
 });
