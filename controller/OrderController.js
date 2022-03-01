@@ -69,7 +69,6 @@ function generateOrderID(){
             nextId = "D00-100";
         }
 
-
         console.log(nextId + " Id");
         return nextId;
     }
@@ -90,19 +89,28 @@ function loadToOrderDetail(){
 }
 
 function loadToOrderHistory(){
-    console.log("fuckkk");
+    const d = new Date();
+
+    const month = d.getMonth() + 1;
+    const day = d.getDate();
+
+    const fullDate = d.getFullYear() + '/' +
+        (month < 10 ? '0' : '') + month + '/' +
+        (day < 10 ? '0' : '') + day;
+
+    let dis = ($("#txtPureTot").val() * ($("#txtDiscount").val()/100));
+
     let historyArray = {
         orderId: orderDetails[orderDetails.length-1].orderID,
         customerID: orderDetails[orderDetails.length-1].customerID,
-        date:"2022.02.28",
-        time:"14.20",
-        totalAmount: "1200"
+        date:fullDate,
+        discount:dis,
+        totalAmount: $("#txtTotBil").val()
     }
 
     orderHistory.push(historyArray);
 
     console.log(historyArray);
-    console.log("fuckkk");
 }
 
 function setTotal(){

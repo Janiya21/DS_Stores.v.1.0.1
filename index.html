@@ -146,7 +146,16 @@
                 <form>
                     <div class="mb-3">
                         <label for="txtItemCode" id="lblItemId" class="form-label">Item Code</label>
-                        <input type="text" class="form-control" id="txtItemCode" aria-describedby="nameHelp" placeholder="Item Code">
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="text" class="form-control" id="txtItemCode" aria-describedby="nameHelp" placeholder="Item Code">
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class="btn-outline-dark" style="border-radius: 40%">
+                                    <img src="assets/img/preview.png" id="btnGenerateItemId" style="width: 30px">
+                                </button>
+                            </div>
+                        </div>
                         <p class="text-danger float-end txtReq" id="req-txtItemCode"></p>
                     </div>
                     <div class="mb-3">
@@ -209,7 +218,16 @@
                 <form>
                     <div class="mb-3">
                         <label for="txtCustomerId" class="form-label">Customer Id</label>
-                        <input type="text" class="form-control" id="txtCustomerId" aria-describedby="telHelp" placeholder="Customer Id">
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="text" class="form-control" id="txtCustomerId" aria-describedby="telHelp" placeholder="Customer Id">
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class="btn-outline-dark" style="border-radius: 40%">
+                                    <img src="assets/img/preview.png" id="btnGenerateCustomerId" style="width: 30px">
+                                </button>
+                            </div>
+                        </div>
                         <p class="text-danger float-end txtReq" id="req-txtCusId"></p>
                     </div>
                     <div class="mb-3">
@@ -391,6 +409,7 @@
                 </form>
 
                 <div class="col">
+                    <h3 class="mx-auto mt-lg-5 text-lg-center ms-5" style="color: #b3b3b3; font-size: 22px">Orders</h3>
                     <section class="shadow-lg table-wrap">
                         <table class="table table-bordered table-hover mt-3 text-white" id="tblOrderDetail">
                             <thead class="bg-dark text-white">
@@ -398,7 +417,7 @@
                                 <th>Order Id</th>
                                 <th>Customer Id</th>
                                 <th>Date</th>
-                                <th>Time</th>
+                                <th>Discount</th>
                                 <th>Total Amount</th>
                             </tr>
                             </thead>
@@ -409,6 +428,7 @@
                 </div>
 
                 <div class="col">
+                    <h3 class="mx-auto mt-lg-5 text-lg-center" style="color: #afafaf; font-size: 22px">order-items</h3>
                     <section class="shadow-lg table-wrap">
                         <table class="table table-bordered table-hover mt-3 text-white" id="tblItemDetail">
                             <thead class="bg-dark text-white">
@@ -417,7 +437,6 @@
                                 <th>Name</th>
                                 <th>Qty</th>
                                 <th>Unit Price</th>
-                                <th>Discount</th>
                                 <th>Total Amount</th>
                             </tr>
                             </thead>

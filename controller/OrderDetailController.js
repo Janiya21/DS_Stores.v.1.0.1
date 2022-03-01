@@ -1,8 +1,8 @@
 function loadAllOrderHistoryToTable(){
     $("#tblOrderDetail-body").empty();
     for(const i in orderHistory) {
-        let row = `<tr><td>${orderHistory[i].orderId}</td><td>${orderHistory[i].customerID}</td><td>${orderHistory[i].date}</td><td>${orderHistory[i].time}</td>
-                    <td>${orderHistory[i].totalAmount}</td></tr>`;
+        let row = `<tr><td>${orderHistory[i].orderId}</td><td>${orderHistory[i].customerID}</td><td>${orderHistory[i].date}</td>
+                    <td>${orderHistory[i].discount}</td><td>${orderHistory[i].totalAmount}</td></tr>`;
         $("#tblOrderDetail").append(row);
     }
 }
@@ -25,7 +25,8 @@ $("#orderHistory").click(function (){
 
                 console.log( orderDetails[i].orderID + "  /  " + oId);
 
-                let row = `<tr><td>${orderDetails[i].itemID}</td><td>${orderDetails[i].itemName}</td><td>${orderDetails[i].units}</td><td>${orderDetails[i].unitPrice}</td><td>${orderDetails[i].total}</td></tr>`;
+                let row = `<tr><td>${orderDetails[i].itemID}</td><td>${orderDetails[i].itemName}</td><td>${orderDetails[i].units}</td><td>${orderDetails[i].unitPrice}</td>
+                            <td>${orderDetails[i].total}</td></tr>`;
                 $("#tblItemDetail").append(row);
             }
         }

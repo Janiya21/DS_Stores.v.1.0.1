@@ -147,6 +147,34 @@ $("#clearCusFields").click(function (){
     $("#txtTelNo").val(null);
 });
 
+$("#btnGenerateCustomerId").click(function (){
+    $("#txtCustomerId").val(generateCustomerId());
+    console.log("clicked");
+});
+
+function generateCustomerId(){
+    if(customers.length === 0){
+        return "C00-001";
+    }else{
+        let getId = customers[customers.length-1].customerCode;
+        let number = Number(getId.substr(4,7));
+        let nextNum = number + 1;
+
+        let nextId;
+
+        if(nextNum<10){
+            nextId = "C00-00"+nextNum;
+        }else if(nextNum<100){
+            nextId = "C00-0"+nextNum;
+        }else{
+            nextId = "C00-100";
+        }
+
+        console.log(nextId + " Id");
+        return nextId;
+    }
+}
+
 function validate(regEx,textField,req){
 
     $(textField).keyup(function (){

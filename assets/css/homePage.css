@@ -3,6 +3,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
+    overflow: hidden;
 }
 
 /* ---------------------------- task_01.html --------------------------------------- */
@@ -145,7 +146,7 @@ body{
 /*---------------------------------------------------*/
 
 .table-wrap{
-    height: 73vh;
+    height: 68vh;
     overflow-y: auto;
 }
 

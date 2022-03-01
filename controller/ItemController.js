@@ -12,6 +12,34 @@ function afterManipulateItemDOM(){
     });
 }
 
+$("#btnGenerateItemId").click(function (){
+    $("#txtItemCode").val(generateItemId());
+    console.log("clicked");
+});
+
+function generateItemId(){
+    if(items.length === 0){
+        return "I00-001";
+    }else{
+        let getId = items[items.length-1].itemID;
+        let number = Number(getId.substr(4,7));
+        let nextNum = number + 1;
+
+        let nextId;
+
+        if(nextNum<10){
+            nextId = "I00-00"+nextNum;
+        }else if(nextNum<100){
+            nextId = "I00-0"+nextNum;
+        }else{
+            nextId = "I00-100";
+        }
+
+        console.log(nextId + " Id");
+        return nextId;
+    }
+}
+
 function addNewItemToTable(){
 
     const id = $("#txtItemCode").val();
