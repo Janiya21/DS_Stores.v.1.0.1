@@ -37,14 +37,23 @@ function addOrderToTable(){
 
     console.log(orderArray);
 
-    orders.push(orderArray);
-
     if(id !== '' && qty !=='' &&  customerId !== ''){
 
-        let i = orders.length-1;
+        let orQty = $("#itemQty").val();
 
-        let row = `<tr><td>${orders[i].itemID}</td><td>${orders[i].itemName}</td><td>${orders[i].units}</td><td>${orders[i].unitPrice}</td><td>${orders[i].total}</td></tr>`;
-        $("#orderTable").append(row);
+        console.log(qty + " < > = " + orQty);
+
+        if( Number(qty) < Number(orQty) ){
+
+            orders.push(orderArray);
+
+            let i = orders.length-1;
+
+            let row = `<tr><td>${orders[i].itemID}</td><td>${orders[i].itemName}</td><td>${orders[i].units}</td><td>${orders[i].unitPrice}</td><td>${orders[i].total}</td></tr>`;
+            $("#orderTable").append(row);
+        }else{
+            alert("Quantity not sufficient !!")
+        }
 
     }else{
         alert("Please check all inputs in item form");
@@ -85,7 +94,15 @@ function calculateTot(){
 function loadToOrderDetail(){
     for (let i = 0; i < orders.length; i++) {
         orderDetails[orderDetails.length] = orders[i];
+
+        for (const j in items) {
+            if(orders[i].itemID === items[j].itemID){
+                items[j].itemQty = items[j].itemQty - orders[i].units;
+            }
+            console.log(items[j].itemQty + " : " + items[j].itemName);
+        }
     }
+
 }
 
 function loadToOrderHistory(){

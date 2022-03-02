@@ -54,15 +54,28 @@ function addNewItemToTable(){
         itemQty:qty
     };
 
-    items.push(itemArray);
-
     if( ($("#req-txtItemCode").text() === '') && (id !== "") && ($("#req-txtItemName").text() === '') && (name !=="")
         && ($("#req-txtItemPrice").text() === '') && (price !=="") && ($("#req-txtItemQty").text() === '') && (qty !=="")){
 
-        let i = items.length -1;
+        let isExist = false;
 
-        let row = `<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}</td><td>${items[i].itemQty}</td></tr>`;
-        $("#itemTable").append(row);
+        for (const i in items) {
+            if(items[i].itemID === id){
+                isExist = true;
+            }
+        }
+
+        if(isExist){
+            alert("This ID is already taken");
+        }else{
+
+            items.push(itemArray);
+
+            let i = items.length -1;
+
+            let row = `<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}</td><td>${items[i].itemQty}</td></tr>`;
+            $("#itemTable").append(row);
+        }
 
     }else{
         alert("Please check all inputs in item form");

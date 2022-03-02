@@ -26,15 +26,28 @@ function addNewCustomerToTable(){
         telNo:tel
     };
 
-    customers.push(customerArray);
-
     if( ($("#req-txtCusId").text() === '') && (code !== "") && ($("#req-txtCusName").text() === '') && (customerName !=="")
         && ($("#req-txtCusAddress").text() === '') && (email !=="") && ($("#req-txtCusTel").text() === '') && (tel !=="")){
 
-        let i = customers.length -1;
+        let isExist = false;
 
-        let row = `<tr><td>${customers[i].customerCode}</td><td>${customers[i].customerName}</td><td>${customers[i].email}</td><td>${customers[i].telNo}</td></tr>`;
-        $("#customerTable").append(row);
+        for (const i in customers) {
+            if(customers[i].customerCode === code){
+                isExist = true;
+            }
+        }
+
+        if(isExist){
+            alert("This ID is already taken");
+        }else{
+
+            customers.push(customerArray);
+
+            let i = customers.length -1;
+
+            let row = `<tr><td>${customers[i].customerCode}</td><td>${customers[i].customerName}</td><td>${customers[i].email}</td><td>${customers[i].telNo}</td></tr>`;
+            $("#customerTable").append(row);
+        }
 
     }else{
         alert("Please check all inputs in Customer form");
