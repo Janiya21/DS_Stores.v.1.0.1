@@ -12,6 +12,15 @@ function afterManipulateItemDOM(){
     });
 }
 
+$("#register").click(function (){
+    $("#txtItemCode").val(null);
+    $("#txtItemName").val(null);
+    $("#txtUnitPrice").val(null);
+    $("#txtQty").val(null);
+
+    loadAllItemsToTable();
+});
+
 $("#btnGenerateItemId").click(function (){
     $("#txtItemCode").val(generateItemId());
     console.log("clicked");
