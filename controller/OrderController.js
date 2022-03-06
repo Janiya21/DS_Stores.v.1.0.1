@@ -45,12 +45,21 @@ function addOrderToTable(){
 
         if( Number(qty) < Number(orQty) ){
 
-            orders.push(orderArray);
+            let isExists=false;
+            for (const i in orders) {
+                if(orders[i].orderID === id){
+                    isExists = true;
+                }
+            }
 
-            let i = orders.length-1;
+            if(!isExists){
+                orders.push(orderArray);
 
-            let row = `<tr><td>${orders[i].itemID}</td><td>${orders[i].itemName}</td><td>${orders[i].units}</td><td>${orders[i].unitPrice}</td><td>${orders[i].total}</td></tr>`;
-            $("#orderTable").append(row);
+                let i = orders.length-1;
+
+                let row = `<tr><td>${orders[i].itemID}</td><td>${orders[i].itemName}</td><td>${orders[i].units}</td><td>${orders[i].unitPrice}</td><td>${orders[i].total}</td></tr>`;
+                $("#orderTable").append(row);
+            }
         }else{
             alert("Quantity not sufficient !!")
         }
