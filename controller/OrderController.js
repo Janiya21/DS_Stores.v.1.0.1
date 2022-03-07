@@ -180,7 +180,6 @@ function createBill(){
 
     let isExecuted = confirm("Are you sure to confirm this order?");
     if(isExecuted){
-        $("#itemID-selector").val(null);
         $("#itemName").val(null);
         $("#unitPrice").val(null);
         $("#orderQty").val(null);
@@ -214,9 +213,11 @@ $("#customerID-selector").click(function (){
         }
     }
 
-    $("#customName").val(customer.customerName);
-    $("#customAddress").val(customer.email);
-    $("#customTelNo").val(customer.telNo);
+    if(customers.length !== 0){
+        $("#customName").val(customer.customerName);
+        $("#customAddress").val(customer.email);
+        $("#customTelNo").val(customer.telNo);
+    }
 });
 
 $("#itemID-selector").click(function (){
@@ -228,9 +229,12 @@ $("#itemID-selector").click(function (){
         }
     }
 
-    $("#itemName").val(item.itemName);
-    $("#unitPrice").val(item.itemPrice);
-    $("#itemQty").val(item.itemQty);
+    if(items.length !== 0){
+        $("#itemName").val(item.itemName);
+        $("#unitPrice").val(item.itemPrice);
+        $("#itemQty").val(item.itemQty);
+    }
+
 });
 
 $("#btnAddToCart").click(function (){

@@ -153,13 +153,6 @@ function updateCustomer(){
     loadAllCustomersToTable();
 }
 
-$("#clearCusFields").click(function (){
-    $("#txtCustomerId").val(null);
-    $("#txtCustomerName").val(null);
-    $("#txtEmail").val(null);
-    $("#txtTelNo").val(null);
-});
-
 $("#btnGenerateCustomerId").click(function (){
     $("#txtCustomerId").val(generateCustomerId());
     console.log("clicked");
@@ -229,6 +222,13 @@ $("#customer-body>tr").click(function (){
 
 $("#btnSrchCustomer").click(function (){
     searchCustomer();
+});
+
+$("#clearCusFields").click(function (){
+    $("#txtCustomerId").val(null);
+    $("#txtCustomerName").val(null);
+    $("#txtEmail").val(null);
+    $("#txtTelNo").val(null);
 });
 
 $("#clearCusFields").click(function (){
