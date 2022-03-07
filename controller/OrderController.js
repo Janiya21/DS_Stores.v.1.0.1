@@ -46,13 +46,33 @@ function addOrderToTable(){
         if( Number(qty) < Number(orQty) ){
 
             let isExists=false;
-            for (const i in orders) {
-                if(orders[i].orderID === id){
-                    isExists = true;
+            let index;
+            let oldQty;
+            let oldTot;
+
+            if(orders.length === 0){
+                isExists = false;
+            }else{
+                console.log("faaark");
+                for (const i in orders) {
+                    console.log(orders[i].itemID + "faaark2" +  id);
+                    if(orders[i].itemID === id){
+                        console.log("faaark3");
+                        isExists = true;
+                        index=i;
+                        oldQty=orders[i].units;
+                        oldTot=orders[i].total;
+                    }
                 }
             }
 
-            if(!isExists){
+            if(isExists){
+                orders[index].units = Number(oldQty) + Number(qty);
+                orders[index].total = Number(tot) + Number(oldTot);
+
+                loadAllItemsToOrderTable();
+
+            }else{
                 orders.push(orderArray);
 
                 let i = orders.length-1;
@@ -146,6 +166,14 @@ function setTotal(){
     let totBil = pureTot - (pureTot * discount)/100;
     console.log(totBil + " rs");
     $("#txtTotBil").val(totBil + " /=");
+}
+
+function loadAllItemsToOrderTable(){
+    $("#order-body").empty();
+    for(const i in orders) {
+        let row = `<tr><td>${orders[i].itemID}</td><td>${orders[i].itemName}</td><td>${orders[i].units}</td><td>${orders[i].unitPrice}</td><td>${orders[i].total}</td></tr>`;
+        $("#orderTable").append(row);
+    }
 }
 
 function createBill(){
