@@ -53,11 +53,8 @@ function addOrderToTable(){
             if(orders.length === 0){
                 isExists = false;
             }else{
-                console.log("faaark");
                 for (const i in orders) {
-                    console.log(orders[i].itemID + "faaark2" +  id);
                     if(orders[i].itemID === id){
-                        console.log("faaark3");
                         isExists = true;
                         index=i;
                         oldQty=orders[i].units;
