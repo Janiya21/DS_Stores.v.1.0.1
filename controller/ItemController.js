@@ -1,9 +1,7 @@
 function afterManipulateItemDOM(){
-    console.log("clicked bich");
     $("#item-body>tr").off();
 
     $("#item-body>tr").click(function (){
-        console.log("clicked");
         loadItemsToTextFields(this);
     });
 

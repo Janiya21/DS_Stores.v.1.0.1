@@ -22,14 +22,15 @@ function loadSearchedOrderToOrderTable(){
 
 }
 
-function loadSelectedRow(){
+function loadSelectedRow(row){
+
     $("#tblItemDetail-body").empty();
-    let oId = $(this).children(":eq(0)").text();
+    let oId = $(row).children(":eq(0)").text();
 
     console.log(oId + " oId");
 
     for (let i=0; i< orderDetails.length; i++) {
-        console.log(i + " i");
+        console.log(orderDetails[i].orderID + " i " + oId);
 
         if(orderDetails[i].orderID === oId){
 
@@ -46,23 +47,27 @@ $("#orderHistory").click(function (){
     loadAllOrderHistoryToTable();
 
     $("#tblOrderDetail-body > tr").click(function (){
-        loadSelectedRow();
+        loadSelectedRow(this);
     });
 });
 
 $("#btnSearchOrder").click(function (){
     loadSearchedOrderToOrderTable();
 
+    $("#tblItemDetail-body").empty();
+
     $("#tblOrderDetail-body > tr").click(function (){
-        loadSelectedRow();
+        loadSelectedRow(this);
     });
 });
 
 $("#btnReload").click(function (){
     loadAllOrderHistoryToTable();
 
+    $("#tblItemDetail-body").empty();
+
     $("#tblOrderDetail-body > tr").click(function (){
-        loadSelectedRow();
+        loadSelectedRow(this);
     });
 });
 
