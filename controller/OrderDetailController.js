@@ -8,16 +8,20 @@ function loadAllOrderHistoryToTable(){
 }
 
 function loadSearchedOrderToOrderTable(){
-    $("#tblOrderDetail-body").empty();
-    let id = $("#searchID").val();
+    if($("#searchID").val() !== ""){
+        $("#tblOrderDetail-body").empty();
+        let id = $("#searchID").val();
 
-    for(const i in orderHistory) {
+        for(const i in orderHistory) {
 
-        if(orderHistory[i].orderId===id){
-            let row = `<tr><td>${orderHistory[i].orderId}</td><td>${orderHistory[i].customerID}</td><td>${orderHistory[i].date}</td>
+            if(orderHistory[i].orderId===id){
+                let row = `<tr><td>${orderHistory[i].orderId}</td><td>${orderHistory[i].customerID}</td><td>${orderHistory[i].date}</td>
                     <td>${orderHistory[i].discount}</td><td>${orderHistory[i].totalAmount}</td></tr>`;
-            $("#tblOrderDetail").append(row);
+                $("#tblOrderDetail").append(row);
+            }
         }
+    }else{
+        alert("Please insert an ID");
     }
 
 }
