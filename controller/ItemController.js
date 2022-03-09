@@ -28,7 +28,7 @@ function generateItemId(){
     if(items.length === 0){
         return "I00-001";
     }else{
-        let getId = items[items.length-1].itemID;
+        let getId = items[items.length-1].getItemCode();
         let number = Number(getId.substr(4,7));
         let nextNum = number + 1;
 
@@ -54,12 +54,7 @@ function addNewItemToTable(){
     const price = $("#txtUnitPrice").val();
     const qty = $("#txtQty").val();
 
-    let itemArray = {
-        itemID:id,
-        itemName:name,
-        itemPrice:price,
-        itemQty:qty
-    };
+    let itemArray = new ItemDTO(id,name,price,qty);
 
     if( ($("#req-txtItemCode").text() === '') && (id !== "") && ($("#req-txtItemName").text() === '') && (name !=="")
         && ($("#req-txtItemPrice").text() === '') && (price !=="") && ($("#req-txtItemQty").text() === '') && (qty !=="")){
@@ -67,7 +62,7 @@ function addNewItemToTable(){
         let isExist = false;
 
         for (const i in items) {
-            if(items[i].itemID === id){
+            if(items[i].getItemCode() === id){
                 isExist = true;
             }
         }
@@ -80,7 +75,7 @@ function addNewItemToTable(){
 
             let i = items.length -1;
 
-            let row = `<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}</td><td>${items[i].itemQty}</td></tr>`;
+            let row = `<tr><td>${items[i].getItemCode()}</td><td>${items[i].getItemName()}</td><td>${items[i].getUnitPrice()}</td><td>${items[i].getItemQty()}</td></tr>`;
             $("#itemTable").append(row);
         }
 
@@ -92,7 +87,7 @@ function addNewItemToTable(){
 function loadAllItemsToTable(){
     $("#item-body").empty();
     for(const i in items) {
-        let row = `<tr><td>${items[i].itemID}</td><td>${items[i].itemName}</td><td>${items[i].itemPrice}</td><td>${items[i].itemQty}</td></tr>`;
+        let row = `<tr><td>${items[i].getItemCode()}</td><td>${items[i].getItemName()}</td><td>${items[i].getUnitPrice()}</td><td>${items[i].getItemQty()}</td></tr>`;
         $("#itemTable").append(row);
     }
 }
@@ -126,16 +121,16 @@ function searchItem(){
     }else{
         let value = null;
         value = items.find(function (e){
-            if(e.itemID === id){
+            if(e.getItemCode() === id){
                 return e;
             }
         });
 
         if(value != null){
-            $("#txtItemCode").val(value.itemID);
-            $("#txtItemName").val(value.itemName);
-            $("#txtUnitPrice").val(value.itemPrice);
-            $("#txtQty").val(value.itemQty);
+            $("#txtItemCode").val(value.getItemCode());
+            $("#txtItemName").val(value.getItemName());
+            $("#txtUnitPrice").val(value.getUnitPrice());
+            $("#txtQty").val(value.getItemQty());
         }else{
             $("#txtItemCode").val(null);
             $("#txtItemName").val(null);
@@ -150,7 +145,7 @@ function deleteItem(){
     let id = $("#txtItemCode").val();
     let index=0;
     for (let i = 0; i < items.length; i++) {
-        if(items[i].itemID === id){
+        if(items[i].getItemCode() === id){
             index =  i;
         }
     }
@@ -164,22 +159,16 @@ function deleteItem(){
 }
 
 function updateItem(){
-
     const id = $("#txtItemCode").val();
     const name = $("#txtItemName").val();
     const price = $("#txtUnitPrice").val();
     const qty = $("#txtQty").val();
 
-    let itemArray = {
-        itemID:id,
-        itemName:name,
-        itemPrice:price,
-        itemQty:qty
-    };
+    let itemArray = new ItemDTO(id,name,price,qty);
 
     let index=0;
     for (let i = 0; i < items.length; i++) {
-        if(items[i].itemID === id){
+        if(items[i].getItemCode() === id){
             index =  i;
         }
     }
@@ -220,7 +209,6 @@ $("#addNewItem").click(function (){
 
     addNewItemToTable();
 
-    console.log("hlo pakk");
     afterManipulateItemDOM();
 });
 
