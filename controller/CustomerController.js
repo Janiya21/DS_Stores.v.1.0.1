@@ -1,9 +1,7 @@
 function afterManipulateCustomerDOM(){
-    console.log("shit");
     $("#customer-body>tr").off();
 
     $("#customer-body>tr").click(function (){
-        console.log("fak");
         loadCustomersToTextFields(this);
     });
 
@@ -19,12 +17,7 @@ function addNewCustomerToTable(){
     const email = $("#txtEmail").val();
     const tel = $("#txtTelNo").val();
 
-    let customerArray = {
-        customerCode:code,
-        customerName:customerName,
-        email:email,
-        telNo:tel
-    };
+    let customerArray = new CustomerDTO(code,customerName,email,tel);
 
     if( ($("#req-txtCusId").text() === '') && (code !== "") && ($("#req-txtCusName").text() === '') && (customerName !=="")
         && ($("#req-txtCusAddress").text() === '') && (email !=="") && ($("#req-txtCusTel").text() === '') && (tel !=="")){
@@ -32,7 +25,7 @@ function addNewCustomerToTable(){
         let isExist = false;
 
         for (const i in customers) {
-            if(customers[i].customerCode === code){
+            if(customers[i].getCustomerID() === code){
                 isExist = true;
             }
         }
@@ -45,7 +38,8 @@ function addNewCustomerToTable(){
 
             let i = customers.length -1;
 
-            let row = `<tr><td>${customers[i].customerCode}</td><td>${customers[i].customerName}</td><td>${customers[i].email}</td><td>${customers[i].telNo}</td></tr>`;
+            let row = `<tr><td>${customers[i].getCustomerID()}</td><td>${customers[i].getCustomerName()}</td><td>${customers[i].getEmail()}</td>
+                        <td>${customers[i].getTelephone()}</td></tr>`;
             $("#customerTable").append(row);
         }
 
@@ -57,7 +51,8 @@ function addNewCustomerToTable(){
 function loadAllCustomersToTable(){
     $("#customer-body").empty();
     for(const i in customers) {
-        let row = `<tr><td>${customers[i].customerCode}</td><td>${customers[i].customerName}</td><td>${customers[i].email}</td><td>${customers[i].telNo}</td></tr>`;
+        let row = `<tr><td>${customers[i].getCustomerID()}</td><td>${customers[i].getCustomerName()}</td><td>${customers[i].getEmail()}</td>
+                        <td>${customers[i].getTelephone()}</td></tr>`;
         $("#customerTable").append(row);
     }
 }
@@ -90,16 +85,16 @@ function searchCustomer(){
     }else{
         let value = null;
         value = customers.find(function (e){
-            if(e.customerCode === id){
+            if(e.getCustomerID() === id){
                 return e;
             }
         });
 
         if(value != null){
-            $("#txtCustomerId").val(value.customerCode);
-            $("#txtCustomerName").val(value.customerName);
-            $("#txtEmail").val(value.email);
-            $("#txtTelNo").val(value.telNo);
+            $("#txtCustomerId").val(value.getCustomerID());
+            $("#txtCustomerName").val(value.getCustomerName());
+            $("#txtEmail").val(value.getEmail());
+            $("#txtTelNo").val(value.getTelephone());
         }else{
             $("#txtCustomerId").val(null);
             $("#txtCustomerName").val(null);
@@ -115,7 +110,7 @@ function deleteCustomer(){
     let id = $("#txtCustomerId").val();
     let index=0;
     for (let i = 0; i < customers.length; i++) {
-        if(customers[i].customerCode === id){
+        if(customers[i].getCustomerID() === id){
             index =  i;
         }
     }
@@ -135,16 +130,11 @@ function updateCustomer(){
     const email = $("#txtEmail").val();
     const tel = $("#txtTelNo").val();
 
-    let customerArray = {
-        customerCode:code,
-        customerName:customerName,
-        email:email,
-        telNo:tel
-    };
+    let customerArray = new CustomerDTO(code,customerName,email,tel);
 
     let index=0;
     for (let i = 0; i < customers.length; i++) {
-        if(customers[i].customerCode === code){
+        if(customers[i].getCustomerID() === code){
             index =  i;
         }
     }
@@ -162,7 +152,7 @@ function generateCustomerId(){
     if(customers.length === 0){
         return "C00-001";
     }else{
-        let getId = customers[customers.length-1].customerCode;
+        let getId = customers[customers.length-1].getCustomerID();
         let number = Number(getId.substr(4,7));
         let nextNum = number + 1;
 
