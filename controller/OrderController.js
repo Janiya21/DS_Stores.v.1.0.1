@@ -1,7 +1,7 @@
 function loadCustomerIDs(){
     $("#customerID-selector").empty();
     for (const i in customers) {
-        let data = `<option value="${customers[i].customerCode}">${customers[i].customerCode}</option>`;
+        let data = `<option value="${customers[i].getCustomerID()}">${customers[i].getCustomerID()}</option>`;
         $("#customerID-selector").append(data);
     }
 }
@@ -9,7 +9,7 @@ function loadCustomerIDs(){
 function loadItemIDs(){
     $("#itemID-selector").empty();
     for (const i in items) {
-        let data = `<option value="${items[i].itemID}">${items[i].itemID}</option>`
+        let data = `<option value="${items[i].getItemCode()}">${items[i].getItemCode()}</option>`
         $("#itemID-selector").append(data);
     }
 }
@@ -25,15 +25,7 @@ function addOrderToTable(){
 
     let orderID=generateOrderID();
 
-    let orderArray = {
-        orderID:orderID,
-        customerID:customerId,
-        itemID:id,
-        itemName:name,
-        units:qty,
-        unitPrice:price,
-        total:tot
-    };
+    let orderArray = new OrderDTO(orderID,customerId,id,name,qty,price,tot);
 
     console.log(orderArray);
 
@@ -54,18 +46,18 @@ function addOrderToTable(){
                 isExists = false;
             }else{
                 for (const i in orders) {
-                    if(orders[i].itemID === id){
+                    if(orders[i].getORDItemId() === id){
                         isExists = true;
                         index=i;
-                        oldQty=orders[i].units;
-                        oldTot=orders[i].total;
+                        oldQty=orders[i].getORDUnits();
+                        oldTot=orders[i].getORDTotal();
                     }
                 }
             }
 
             if(isExists){
-                orders[index].units = Number(oldQty) + Number(qty);
-                orders[index].total = Number(tot) + Number(oldTot);
+                orders[index].setORDUnits(Number(oldQty) + Number(qty));
+                orders[index].setORDTotal(Number(tot) + Number(oldTot));
 
                 loadAllItemsToOrderTable();
 
