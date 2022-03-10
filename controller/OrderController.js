@@ -83,7 +83,7 @@ function generateOrderID(){
     if(orderDetails.length === 0){
         return "D00-001";
     }else{
-        let getId = orderDetails[orderDetails.length-1].orderID;
+        let getId = orderDetails[orderDetails.length-1].getORDOrderId();
         let number = Number(getId.substr(4,7));
         let nextNum = number + 1;
 
@@ -105,7 +105,7 @@ function generateOrderID(){
 function calculateTot(){
     let tot=0;
     for (const i in orders) {
-        tot+=orders[i].total;
+        tot+=orders[i].getORDTotal();
     }
     $("#txtPureTot").val(tot);
 }
@@ -115,10 +115,10 @@ function loadToOrderDetail(){
         orderDetails[orderDetails.length] = orders[i];
 
         for (const j in items) {
-            if(orders[i].itemID === items[j].itemID){
-                items[j].itemQty = items[j].itemQty - orders[i].units;
+            if(orders[i].getORDItemId() === items[j].getItemCode()){
+                items[j].setItemQty(items[j].getItemQty() - orders[i].getORDUnits());
             }
-            console.log(items[j].itemQty + " : " + items[j].itemName);
+            console.log(items[j].getItemQty() + " : " + items[j].getItemName());
         }
     }
 
@@ -137,8 +137,8 @@ function loadToOrderHistory(){
     let dis = ($("#txtPureTot").val() * ($("#txtDiscount").val()/100));
 
     let historyArray = {
-        orderId: orderDetails[orderDetails.length-1].orderID,
-        customerID: orderDetails[orderDetails.length-1].customerID,
+        orderId: orderDetails[orderDetails.length-1].getORDOrderId(),
+        customerID: orderDetails[orderDetails.length-1].getORDCustomerId(),
         date:fullDate,
         discount:dis,
         totalAmount: $("#txtTotBil").val()
@@ -161,7 +161,8 @@ function setTotal(){
 function loadAllItemsToOrderTable(){
     $("#order-body").empty();
     for(const i in orders) {
-        let row = `<tr><td>${orders[i].itemID}</td><td>${orders[i].itemName}</td><td>${orders[i].units}</td><td>${orders[i].unitPrice}</td><td>${orders[i].total}</td></tr>`;
+        let row = `<tr><td>${orders[i].getORDItemId()}</td><td>${orders[i].getORDItemName()}</td><td>${orders[i].getORDUnits()}</td>
+                    <td>${orders[i].getORDUnitPrice()}</td><td>${orders[i].getORDTotal()}</td></tr>`;
         $("#orderTable").append(row);
     }
 }
@@ -201,15 +202,15 @@ $("#customerID-selector").click(function (){
 
     let customer;
     for (const i in customers) {
-        if(customers[i].customerCode === customerID){
+        if(customers[i].getCustomerID() === customerID){
             customer =  customers[i];
         }
     }
 
     if(customers.length !== 0){
-        $("#customName").val(customer.customerName);
-        $("#customAddress").val(customer.email);
-        $("#customTelNo").val(customer.telNo);
+        $("#customName").val(customer.getCustomerName());
+        $("#customAddress").val(customer.getEmail());
+        $("#customTelNo").val(customer.getTelephone());
     }
 });
 
@@ -217,15 +218,15 @@ $("#itemID-selector").click(function (){
     var itemID = $("#itemID-selector").val();
     let item;
     for (const i in items) {
-        if(items[i].itemID === itemID){
+        if(items[i].getItemCode() === itemID){
             item =  items[i];
         }
     }
 
     if(items.length !== 0){
-        $("#itemName").val(item.itemName);
-        $("#unitPrice").val(item.itemPrice);
-        $("#itemQty").val(item.itemQty);
+        $("#itemName").val(item.getItemName());
+        $("#unitPrice").val(item.getUnitPrice());
+        $("#itemQty").val(item.getItemQty());
     }
 
 });

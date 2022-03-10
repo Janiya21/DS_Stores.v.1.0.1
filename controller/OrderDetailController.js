@@ -34,14 +34,15 @@ function loadSelectedRow(row){
     console.log(oId + " oId");
 
     for (let i=0; i< orderDetails.length; i++) {
-        console.log(orderDetails[i].orderID + " i " + oId);
+        console.log(orderDetails[i].getORDOrderId() + " i " + oId);
 
-        if(orderDetails[i].orderID === oId){
+        if(orderDetails[i].getORDOrderId() === oId){
 
-            console.log( orderDetails[i].orderID + "  /  " + oId);
+            console.log( orderDetails[i].getORDOrderId() + "  /  " + oId);
 
-            let row = `<tr><td>${orderDetails[i].itemID}</td><td>${orderDetails[i].itemName}</td><td>${orderDetails[i].units}</td><td>${orderDetails[i].unitPrice}</td>
-                            <td>${orderDetails[i].total}</td></tr>`;
+            let row = `<tr><td>${orderDetails[i].getORDItemId()}</td><td>${orderDetails[i].getORDItemName()}</td>
+                        <td>${orderDetails[i].getORDUnits()}</td><td>${orderDetails[i].getORDUnitPrice()}</td>
+                            <td>${orderDetails[i].getORDTotal()}</td></tr>`;
             $("#tblItemDetail").append(row);
         }
     }
