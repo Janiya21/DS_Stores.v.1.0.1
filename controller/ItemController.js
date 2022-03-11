@@ -144,19 +144,24 @@ function searchItem(){
 
 function deleteItem(){
     let id = $("#txtItemCode").val();
-    let index=0;
-    for (let i = 0; i < items.length; i++) {
-        if(items[i].getItemCode() === id){
-            index =  i;
+    if(id!==''){
+        let index=0;
+        for (let i = 0; i < items.length; i++) {
+            if(items[i].getItemCode() === id){
+                index =  i;
+            }
         }
+
+        items.splice(index,1);
+
+        $("#txtItemCode").val(null);
+        $("#txtItemName").val(null);
+        $("#txtUnitPrice").val(null);
+        $("#txtQty").val(null);
+    }else{
+        alert("Please click the row you need to delete");
     }
 
-    items.splice(index,1);
-
-    $("#txtItemCode").val(null);
-    $("#txtItemName").val(null);
-    $("#txtUnitPrice").val(null);
-    $("#txtQty").val(null);
 }
 
 function updateItem(){
@@ -178,7 +183,7 @@ function updateItem(){
         items[index] = itemArray;
         loadAllItemsToTable();
     }else{
-        alert("Please fill th fields Before Update");
+        alert("Please load th fields Before Update");
     }
 
 }
@@ -237,6 +242,13 @@ $("#clearItemFields").click(function (){
 
 $("#updateItem").click(function (){
     updateItem();
+
+    afterManipulateItemDOM();
+});
+
+$("#dltItem").click(function (){
+    deleteItem();
+    loadAllItemsToTable();
 
     afterManipulateItemDOM();
 });
