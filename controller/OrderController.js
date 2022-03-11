@@ -191,8 +191,12 @@ function createBill(){
 }
 
 $("#placeOrder").click(function (){
-    loadCustomerIDs();
-    loadItemIDs();
+   if(customers.length !== 0){
+       loadCustomerIDs();
+   }
+   if(items.length !== 0){
+       loadItemIDs();
+   }
 });
 
 $("#customerID-selector").click(function (){

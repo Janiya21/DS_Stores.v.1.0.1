@@ -132,20 +132,25 @@ function updateCustomer(){
 
     let customerArray = new CustomerDTO(code,customerName,email,tel);
 
-    let index=0;
-    for (let i = 0; i < customers.length; i++) {
-        if(customers[i].getCustomerID() === code){
-            index =  i;
+    if(code!=='' && customerName!=='' && email!=='' && tel!==''){
+        let index=0;
+        for (let i = 0; i < customers.length; i++) {
+            if(customers[i].getCustomerID() === code){
+                index =  i;
+            }
         }
-    }
 
-    customers[index] = customerArray;
-    loadAllCustomersToTable();
+        customers[index] = customerArray;
+        loadAllCustomersToTable();
+    }else{
+        alert("Please fill th fields Before Update");
+    }
 }
 
 $("#btnGenerateCustomerId").click(function (){
     $("#txtCustomerId").val(generateCustomerId());
     console.log("clicked");
+    $("#txtCustomerName").focus();
 });
 
 function generateCustomerId(){

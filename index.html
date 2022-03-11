@@ -26,7 +26,7 @@
                     <a aria-current="page" id="orderHistory" class="nav-link active btn" >Order History</a>
                 </li>
             </ul>
-            <a aria-current="page" href="alternate/taskView.html" id="SPA" class="nav-link active btn-success me-4" >Tasks</a>
+            <a aria-current="page" href="alternate/taskView.html" target="_blank" id="SPA" class="nav-link active btn-success me-4" >Tasks</a>
         </div>
     </div>
 </nav>
@@ -148,7 +148,7 @@
                         <label for="txtItemCode" id="lblItemId" class="form-label">Item Code</label>
                         <div class="row">
                             <div class="col-10">
-                                <input type="text" class="form-control" id="txtItemCode" aria-describedby="nameHelp" placeholder="Item Code">
+                                <input type="text" class="form-control" disabled id="txtItemCode" aria-describedby="nameHelp" placeholder="Item Code">
                             </div>
                             <div class="col-1">
                                 <button type="button"  style="border-radius: 40%">
@@ -220,7 +220,7 @@
                         <label for="txtCustomerId" class="form-label">Customer Id</label>
                         <div class="row">
                             <div class="col-10">
-                                <input type="text" class="form-control" id="txtCustomerId" aria-describedby="telHelp" placeholder="Customer Id">
+                                <input type="text" class="form-control" disabled id="txtCustomerId" aria-describedby="telHelp" placeholder="Customer Id">
                             </div>
                             <div class="col-1">
                                 <button type="button" style="border-radius: 40%">
@@ -294,10 +294,7 @@
                 <form>
                     <div class="form-group mt-4">
                         <select class="custom-select" id="customerID-selector" required>
-                            <!--<option value="">Select Customer Id</option>
-                            <option value="1">C-001</option>
-                            <option value="2">C-002</option>
-                            <option value="3">C-003</option>-->
+                            <option value="">Empty List</option>
                         </select>
                         <div class="invalid-feedback">Example invalid custom select feedback</div>
                     </div>
@@ -316,10 +313,7 @@
 
                     <div class="form-group mt-4">
                         <select class="custom-select" id="itemID-selector" required>
-                            <!--<option value="">Select Item Id</option>
-                            <option value="1">I-001</option>
-                            <option value="2">I-002</option>
-                            <option value="3">I-003</option>-->
+                            <option value="">Empty List</option>
                         </select>
                         <div class="invalid-feedback">Example invalid custom select feedback</div>
                     </div>
@@ -507,6 +501,12 @@
         $("#cont-03").css("display","none");
         $("#cont-04").css("display","none");
     });
+
+    $(document).keydown(function(objEvent) {
+        if (objEvent.keyCode === 9) {  //tab pressed
+            objEvent.preventDefault(); // stops its action
+        }
+    })
 
     /*var xValues = [50,60,70,80,90,100,110,120,130,140,150];
     var yValues = [7,8,8,9,9,9,10,11,14,14,15];

@@ -22,6 +22,7 @@ $("#register").click(function (){
 $("#btnGenerateItemId").click(function (){
     $("#txtItemCode").val(generateItemId());
     console.log("clicked");
+    $("#txtItemName").focus();
 });
 
 function generateItemId(){
@@ -166,15 +167,20 @@ function updateItem(){
 
     let itemArray = new ItemDTO(id,name,price,qty);
 
-    let index=0;
-    for (let i = 0; i < items.length; i++) {
-        if(items[i].getItemCode() === id){
-            index =  i;
+    if(id!=='' && name!=='' && price!=='' && qty!==''){
+        let index=0;
+        for (let i = 0; i < items.length; i++) {
+            if(items[i].getItemCode() === id){
+                index =  i;
+            }
         }
+
+        items[index] = itemArray;
+        loadAllItemsToTable();
+    }else{
+        alert("Please fill th fields Before Update");
     }
 
-    items[index] = itemArray;
-    loadAllItemsToTable();
 }
 
 function validate(regEx,textField,req){
