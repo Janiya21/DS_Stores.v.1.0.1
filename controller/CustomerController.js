@@ -241,15 +241,15 @@ $("#updateCustomer").click(function (){
     afterManipulateCustomerDOM();
 });
 
-/*validate(/^(C00-)[0-9]{3,4}$/,"#txtCustomerId","#req-txtCusId");
-validate(/^[a-zA-Z]{2,15}$/,"#txtCustomerName","#req-txtCusName");
-validate(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,"#txtEmail","#req-txtCusAddress");
-validate(/^[0-9]{10}$/,"#txtTelNo","#req-txtCusTel");*/
-
 validate(/^(C00-)[0-9]{3,4}$/,"#txtCustomerId","#req-txtCusId");
 validate(/^[a-zA-Z]{2,15}$/,"#txtCustomerName","#req-txtCusName");
+validate(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,"#txtEmail","#req-txtCusAddress");
+validate(/^[0-9]{10}$/,"#txtTelNo","#req-txtCusTel");
+
+/*validate(/^(C00-)[0-9]{3,4}$/,"#txtCustomerId","#req-txtCusId");
+validate(/^[a-zA-Z]{2,15}$/,"#txtCustomerName","#req-txtCusName");
 validate(/^[a-zA-Z]{2,15}$/,"#txtEmail","#req-txtCusAddress");
-validate(/^[0-9]{4,10}$/,"#txtTelNo","#req-txtCusTel");
+validate(/^[0-9]{4,10}$/,"#txtTelNo","#req-txtCusTel");*/
 
 navigateToNext("#txtCustomerId","#txtCustomerName","#req-txtCusId");
 navigateToNext("#txtCustomerName","#txtEmail","#req-txtCusName");
